@@ -1,11 +1,11 @@
 import React from "react";
-import "./App.css";
+import style from "./App.module.scss";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 
 function App() {
     return (
-        <Tabs defaultActiveKey="profile" id="justify-tab-example" className="mb-3" justify>
+        <Tabs defaultActiveKey="home" transition={false} id="noanim-tab-example" className="mb-3">
             <Tab eventKey="home" title="Home">
                 Tab content for Home
             </Tab>
@@ -15,7 +15,7 @@ function App() {
             <Tab eventKey="longer-tab" title="Loooonger Tab">
                 Tab content for Loooonger Tab
             </Tab>
-            <Tab eventKey="contact" title="Contact" disabled>
+            <Tab eventKey="contact" title="Contact">
                 Tab content for Contact
             </Tab>
         </Tabs>
