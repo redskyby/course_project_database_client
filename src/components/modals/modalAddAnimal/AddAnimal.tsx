@@ -7,32 +7,36 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 
 const AddAnimal = ({ show, setShow }: { show: boolean; setShow: React.Dispatch<React.SetStateAction<boolean>> }) => {
-    const [formData, setFormData] = useState<FormDatForAddAnimalModal>({
-        name: "",
-        species: "",
-        gender: "",
-        height: "",
-        weight: "",
-        date: "",
-        age: 0,
-        typeOfFeed: "",
-        naturalArea: "",
-        cageNum: 0,
-        offspring: 0,
-        numOffSpring: 0,
-    });
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = e.target;
-        setFormData((prevState) => ({
-            ...prevState,
-            [name]: value,
-        }));
-    };
+    const [name, setName] = useState<string>("");
+    const [species, setSpecies] = useState<string>("");
+    const [gender, setGender] = useState<string>("");
+    const [height, setHeight] = useState<string>("");
+    const [weight, setWeight] = useState<string>("");
+    const [date, setDate] = useState<string>("");
+    const [age, setAge] = useState<number>(0);
+    const [typeOfFeed, setTypeOfFeed] = useState<string>("");
+    const [naturalArea, setNaturalArea] = useState<string>("");
+    const [cageNum, setCageNum] = useState<number>(0);
+    const [offspring, setOffspring] = useState<number>(0);
+    const [numOffSpring, setNumOffSpring] = useState<number>(0);
 
     const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
         setShow(false);
+        const formData: FormDatForAddAnimalModal = {
+            name,
+            species,
+            gender,
+            height,
+            weight,
+            date,
+            age,
+            typeOfFeed,
+            naturalArea,
+            cageNum,
+            offspring,
+            numOffSpring,
+        };
         console.log(formData); // Отправка данных, например, на сервер
     };
 
@@ -49,9 +53,8 @@ const AddAnimal = ({ show, setShow }: { show: boolean; setShow: React.Dispatch<R
                                 <Form.Label>Name</Form.Label>
                                 <Form.Control
                                     type="text"
-                                    name="name"
-                                    value={formData.name}
-                                    onChange={handleChange}
+                                    value={name}
+                                    onChange={(e) => setName(e.target.value)}
                                     required
                                 />
                             </Form.Group>
@@ -59,29 +62,30 @@ const AddAnimal = ({ show, setShow }: { show: boolean; setShow: React.Dispatch<R
                                 <Form.Label>Species</Form.Label>
                                 <Form.Control
                                     type="text"
-                                    name="species"
-                                    value={formData.species}
-                                    onChange={handleChange}
+                                    value={species}
+                                    onChange={(e) => setSpecies(e.target.value)}
                                     required
                                 />
                             </Form.Group>
                             <Form.Group controlId="gender">
                                 <Form.Label>Gender</Form.Label>
                                 <Form.Control
-                                    type="text"
-                                    name="gender"
-                                    value={formData.gender}
-                                    onChange={handleChange}
+                                    as="select"
+                                    value={gender}
+                                    onChange={(e) => setGender(e.target.value)}
                                     required
-                                />
+                                >
+                                    <option value="">Select Gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </Form.Control>
                             </Form.Group>
                             <Form.Group controlId="height">
                                 <Form.Label>Height</Form.Label>
                                 <Form.Control
                                     type="text"
-                                    name="height"
-                                    value={formData.height}
-                                    onChange={handleChange}
+                                    value={height}
+                                    onChange={(e) => setHeight(e.target.value)}
                                     required
                                 />
                             </Form.Group>
@@ -89,9 +93,8 @@ const AddAnimal = ({ show, setShow }: { show: boolean; setShow: React.Dispatch<R
                                 <Form.Label>Weight</Form.Label>
                                 <Form.Control
                                     type="text"
-                                    name="weight"
-                                    value={formData.weight}
-                                    onChange={handleChange}
+                                    value={weight}
+                                    onChange={(e) => setWeight(e.target.value)}
                                     required
                                 />
                             </Form.Group>
@@ -99,9 +102,8 @@ const AddAnimal = ({ show, setShow }: { show: boolean; setShow: React.Dispatch<R
                                 <Form.Label>Date</Form.Label>
                                 <Form.Control
                                     type="date"
-                                    name="date"
-                                    value={formData.date}
-                                    onChange={handleChange}
+                                    value={date}
+                                    onChange={(e) => setDate(e.target.value)}
                                     required
                                 />
                             </Form.Group>
@@ -111,29 +113,30 @@ const AddAnimal = ({ show, setShow }: { show: boolean; setShow: React.Dispatch<R
                                 <Form.Label>Age</Form.Label>
                                 <Form.Control
                                     type="number"
-                                    name="age"
-                                    value={formData.age.toString()}
-                                    onChange={handleChange}
+                                    value={age}
+                                    onChange={(e) => setAge(parseInt(e.target.value))}
                                     required
                                 />
                             </Form.Group>
                             <Form.Group controlId="typeOfFeed">
                                 <Form.Label>Type of Feed</Form.Label>
                                 <Form.Control
-                                    type="text"
-                                    name="typeOfFeed"
-                                    value={formData.typeOfFeed}
-                                    onChange={handleChange}
+                                    as="select"
+                                    value={typeOfFeed}
+                                    onChange={(e) => setTypeOfFeed(e.target.value)}
                                     required
-                                />
+                                >
+                                    <option value="">Select Type of Feed</option>
+                                    <option value="meat">Meat</option>
+                                    <option value="herb">Herb</option>
+                                </Form.Control>
                             </Form.Group>
                             <Form.Group controlId="naturalArea">
                                 <Form.Label>Natural Area</Form.Label>
                                 <Form.Control
                                     type="text"
-                                    name="naturalArea"
-                                    value={formData.naturalArea}
-                                    onChange={handleChange}
+                                    value={naturalArea}
+                                    onChange={(e) => setNaturalArea(e.target.value)}
                                     required
                                 />
                             </Form.Group>
@@ -141,9 +144,8 @@ const AddAnimal = ({ show, setShow }: { show: boolean; setShow: React.Dispatch<R
                                 <Form.Label>Cage Number</Form.Label>
                                 <Form.Control
                                     type="number"
-                                    name="cageNum"
-                                    value={formData.cageNum.toString()}
-                                    onChange={handleChange}
+                                    value={cageNum}
+                                    onChange={(e) => setCageNum(parseInt(e.target.value))}
                                     required
                                 />
                             </Form.Group>
@@ -151,9 +153,8 @@ const AddAnimal = ({ show, setShow }: { show: boolean; setShow: React.Dispatch<R
                                 <Form.Label>Offspring</Form.Label>
                                 <Form.Control
                                     type="number"
-                                    name="offspring"
-                                    value={formData.offspring.toString()}
-                                    onChange={handleChange}
+                                    value={offspring}
+                                    onChange={(e) => setOffspring(parseInt(e.target.value))}
                                     required
                                 />
                             </Form.Group>
@@ -161,9 +162,8 @@ const AddAnimal = ({ show, setShow }: { show: boolean; setShow: React.Dispatch<R
                                 <Form.Label>Number of Offspring</Form.Label>
                                 <Form.Control
                                     type="number"
-                                    name="numOffSpring"
-                                    value={formData.numOffSpring.toString()}
-                                    onChange={handleChange}
+                                    value={numOffSpring}
+                                    onChange={(e) => setNumOffSpring(parseInt(e.target.value))}
                                     required
                                 />
                             </Form.Group>
