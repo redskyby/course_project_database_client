@@ -1,39 +1,44 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import Table from "react-bootstrap/Table";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import AnimalApi from "../api/AnimalApi";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../redux";
+import { SET_ANIMALS } from "../redux/slice/AnimalSlice";
 
 const AnimalTable = () => {
+    const dispatch = useDispatch();
+    const animal = useSelector((state: RootState) => state.AnimalToolKit.animals);
 
+    // const animal = [
+    //     {
+    //         name: "sharick",
+    //         species: "Cat",
+    //         gender: "Female",
+    //         height: 30,
+    //         weight: 4,
+    //         date: "2023-03-15",
+    //         age: 2,
+    //         typeOfFeed: "meat",
+    //         naturalArea: "Indoor",
+    //         cageNum: "13",
+    //         offSpring: null,
+    //         numOffSpring: 0,
+    //         idMale: null,
+    //         idFemale: null,
+    //     }
+    // ];
 
-    const animal = [
-        {
-            name: "sharick",
-            species: "Cat",
-            gender: "Female",
-            height: 30,
-            weight: 4,
-            date: "2023-03-15",
-            age: 2,
-            typeOfFeed: "meat",
-            naturalArea: "Indoor",
-            cageNum: "13",
-            offSpring: null,
-            numOffSpring: 0,
-            idMale: null,
-            idFemale: null,
-        }
-    ];
-
-    useEffect(()=>{
+    useEffect(() => {
         AnimalApi.getAllAnimals()
-            .then((data) =>{
-                console.log(data)
-            }).catch((e) => console.log(e.message));
-    }, [])
+            .then((data) => {
+                dispatch(SET_ANIMALS(data));
+            })
+            .catch((e) => console.log(e.message));
+    }, []);
 
     return (
         <Container>
@@ -76,7 +81,7 @@ const AnimalTable = () => {
                     {animal.map((animal, index) => (
                         <tr key={index}>
                             <td>{index + 1}</td>
-                            <td>{index}</td>
+                            <td>{animal.id}</td>
                             <td>{animal.name}</td>
                             <td>{animal.species}</td>
                             <td>{animal.gender}</td>
@@ -87,8 +92,8 @@ const AnimalTable = () => {
                             <td>{animal.typeOfFeed}</td>
                             <td>{animal.naturalArea}</td>
                             <td>{animal.cageNum}</td>
-                            <td>{animal.offSpring !== null ? animal.offSpring : "null"}</td>
-                            <td>{animal.numOffSpring}</td>
+                            <td>{animal.offspring}</td>
+                            <td>{animal.numOffspring}</td>
                             <td>{animal.idMale !== null ? animal.idMale : "null"}</td>
                             <td>{animal.idFemale !== null ? animal.idFemale : "null"}</td>
                         </tr>

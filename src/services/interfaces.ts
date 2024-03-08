@@ -1,5 +1,5 @@
 export interface AnimalInterface {
-    id: number;
+    id: string;
     name: string;
     species: string;
     gender: string;
@@ -15,4 +15,3 @@ export interface AnimalInterface {
     idMale: number | null;
     idFemale: number | null;
 }
-
