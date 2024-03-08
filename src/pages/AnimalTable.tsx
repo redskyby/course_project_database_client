@@ -1,11 +1,14 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Container from "react-bootstrap/Container";
 import Table from "react-bootstrap/Table";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
+import AnimalApi from "../api/AnimalApi";
 
 const AnimalTable = () => {
+
+
     const animal = [
         {
             name: "sharick",
@@ -22,24 +25,15 @@ const AnimalTable = () => {
             numOffSpring: 0,
             idMale: null,
             idFemale: null,
-        },
-        {
-            name: "tyzick",
-            species: "Cat",
-            gender: "Female",
-            height: 30,
-            weight: 7,
-            date: "2023-03-15",
-            age: 2,
-            typeOfFeed: "meat",
-            naturalArea: "Indoor",
-            cageNum: "13",
-            offSpring: null,
-            numOffSpring: 0,
-            idMale: null,
-            idFemale: null,
-        },
+        }
     ];
+
+    useEffect(()=>{
+        AnimalApi.getAllAnimals()
+            .then((data) =>{
+                console.log(data)
+            }).catch((e) => console.log(e.message));
+    }, [])
 
     return (
         <Container>
