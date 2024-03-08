@@ -15,3 +15,18 @@ export interface AnimalInterface {
     idMale: number | null;
     idFemale: number | null;
 }
+
+export interface FormDatForAddAnimalModal {
+    name: string;
+    species: string;
+    gender: string;
+    height: string;
+    weight: string;
+    date: string;
+    age: number;
+    typeOfFeed: string;
+    naturalArea: string;
+    cageNum: number;
+    offspring: number;
+    numOffSpring: number;
+}
