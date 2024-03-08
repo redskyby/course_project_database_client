@@ -30,8 +30,9 @@ const AddAnimal = ({ show, setShow }: { show: boolean; setShow: React.Dispatch<R
         }));
     };
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
+        setShow(false);
         console.log(formData); // Отправка данных, например, на сервер
     };
 
@@ -41,9 +42,7 @@ const AddAnimal = ({ show, setShow }: { show: boolean; setShow: React.Dispatch<R
                 <Modal.Title>Добавить животное</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                {/*forma*/}
-
-                <Form onSubmit={handleSubmit}>
+                <Form>
                     <Row>
                         <Col>
                             <Form.Group controlId="name">
@@ -99,7 +98,7 @@ const AddAnimal = ({ show, setShow }: { show: boolean; setShow: React.Dispatch<R
                             <Form.Group controlId="date">
                                 <Form.Label>Date</Form.Label>
                                 <Form.Control
-                                    type="text"
+                                    type="date"
                                     name="date"
                                     value={formData.date}
                                     onChange={handleChange}
@@ -171,14 +170,12 @@ const AddAnimal = ({ show, setShow }: { show: boolean; setShow: React.Dispatch<R
                         </Col>
                     </Row>
                 </Form>
-
-                {/*forma*/}
             </Modal.Body>
             <Modal.Footer>
                 <Button variant="secondary" onClick={() => setShow(false)}>
                     Закрыть
                 </Button>
-                <Button variant="primary" onClick={() => setShow(false)}>
+                <Button variant="primary" onClick={(e) => handleSubmit(e)}>
                     Сохранить
                 </Button>
             </Modal.Footer>
