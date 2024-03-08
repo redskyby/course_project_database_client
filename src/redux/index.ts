@@ -1,8 +1,8 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import animals from "./slice/AnimalSlice"
+import animals from "./slice/AnimalSlice";
 
 const rootReducer = combineReducers({
-    AnimalToolKit : animals
+    AnimalToolKit: animals,
 });
 
 export const store = configureStore({
