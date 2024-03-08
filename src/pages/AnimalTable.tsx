@@ -1,37 +1,104 @@
 import React from "react";
 import Container from "react-bootstrap/Container";
 import Table from "react-bootstrap/Table";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
 
 const AnimalTable = () => {
+    const animal = [
+        {
+            name: "sharick",
+            species: "Cat",
+            gender: "Female",
+            height: 30,
+            weight: 4,
+            date: "2023-03-15",
+            age: 2,
+            typeOfFeed: "meat",
+            naturalArea: "Indoor",
+            cageNum: "13",
+            offSpring: null,
+            numOffSpring: 0,
+            idMale: null,
+            idFemale: null,
+        },
+        {
+            name: "tyzick",
+            species: "Cat",
+            gender: "Female",
+            height: 30,
+            weight: 7,
+            date: "2023-03-15",
+            age: 2,
+            typeOfFeed: "meat",
+            naturalArea: "Indoor",
+            cageNum: "13",
+            offSpring: null,
+            numOffSpring: 0,
+            idMale: null,
+            idFemale: null,
+        },
+    ];
+
     return (
         <Container>
-            <Table striped bordered hover responsive>
+            <Row className="mt-2" xs="auto">
+                <Col>
+                    <Button variant="primary">Добавить</Button>
+                </Col>
+                <Col>
+                    <Button variant="primary">Редактировать</Button>
+                </Col>
+                <Col>
+                    <Button variant="primary">Удалить</Button>
+                </Col>
+                <Col>
+                    <Button variant="primary">Фильтр</Button>
+                </Col>
+            </Row>
+            <Table striped bordered hover responsive className="mt-2">
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Username</th>
+                        <th>id</th>
+                        <th>name</th>
+                        <th>species</th>
+                        <th>gender</th>
+                        <th>height</th>
+                        <th>weight</th>
+                        <th>date</th>
+                        <th>age</th>
+                        <th>type of feed</th>
+                        <th>natural area</th>
+                        <th>cage num</th>
+                        <th>offspring</th>
+                        <th>num offspring</th>
+                        <th>idMale</th>
+                        <th>idFemale</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td colSpan={2}>Larry the Bird</td>
-                        <td>@twitter</td>
-                    </tr>
+                    {animal.map((animal, index) => (
+                        <tr key={index}>
+                            <td>{index + 1}</td>
+                            <td>{index}</td>
+                            <td>{animal.name}</td>
+                            <td>{animal.species}</td>
+                            <td>{animal.gender}</td>
+                            <td>{animal.height}</td>
+                            <td>{animal.weight}</td>
+                            <td>{animal.date}</td>
+                            <td>{animal.age}</td>
+                            <td>{animal.typeOfFeed}</td>
+                            <td>{animal.naturalArea}</td>
+                            <td>{animal.cageNum}</td>
+                            <td>{animal.offSpring !== null ? animal.offSpring : "null"}</td>
+                            <td>{animal.numOffSpring}</td>
+                            <td>{animal.idMale !== null ? animal.idMale : "null"}</td>
+                            <td>{animal.idFemale !== null ? animal.idFemale : "null"}</td>
+                        </tr>
+                    ))}
                 </tbody>
             </Table>
         </Container>
