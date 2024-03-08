@@ -8,29 +8,11 @@ import AnimalApi from "../api/AnimalApi";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux";
 import { SET_ANIMALS } from "../redux/slice/AnimalSlice";
+import localDate from "../utils/LocalDate";
 
 const AnimalTable = () => {
     const dispatch = useDispatch();
     const animal = useSelector((state: RootState) => state.AnimalToolKit.animals);
-
-    // const animal = [
-    //     {
-    //         name: "sharick",
-    //         species: "Cat",
-    //         gender: "Female",
-    //         height: 30,
-    //         weight: 4,
-    //         date: "2023-03-15",
-    //         age: 2,
-    //         typeOfFeed: "meat",
-    //         naturalArea: "Indoor",
-    //         cageNum: "13",
-    //         offSpring: null,
-    //         numOffSpring: 0,
-    //         idMale: null,
-    //         idFemale: null,
-    //     }
-    // ];
 
     useEffect(() => {
         AnimalApi.getAllAnimals()
@@ -87,7 +69,7 @@ const AnimalTable = () => {
                             <td>{animal.gender}</td>
                             <td>{animal.height}</td>
                             <td>{animal.weight}</td>
-                            <td>{animal.date}</td>
+                            <td>{localDate(animal.date)}</td>
                             <td>{animal.age}</td>
                             <td>{animal.typeOfFeed}</td>
                             <td>{animal.naturalArea}</td>
