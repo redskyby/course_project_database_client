@@ -8,7 +8,7 @@ import AnimalApi from "../api/AnimalApi";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux";
 import { SET_ANIMALS } from "../redux/slice/AnimalSlice";
-import localDate from "../utils/LocalDate";
+import { localDate } from "../utils/LocalDate";
 
 const AnimalTable = () => {
     const dispatch = useDispatch();
