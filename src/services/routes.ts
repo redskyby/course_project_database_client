@@ -1,5 +1,6 @@
 import AnimalTable from "../pages/AnimalTable";
-import { ANIMALS_ROUTE } from "./const";
+import {ANIMALS_ROUTE} from "./const";
+
 
 export const publicRoutes: { path: string; Component: React.FC }[] = [
     {

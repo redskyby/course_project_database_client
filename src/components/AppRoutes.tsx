@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { publicRoutes } from "../utils/routes";
-import { ANIMALS_ROUTE } from "../utils/const";
+import { publicRoutes } from "../services/routes";
+import { ANIMALS_ROUTE } from "../services/const";
 
 const AppRoutes = () => {
     return (

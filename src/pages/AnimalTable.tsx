@@ -8,7 +8,7 @@ import AnimalApi from "../api/AnimalApi";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux";
 import { SET_ANIMALS } from "../redux/slice/AnimalSlice";
-import { localDate } from "../utils/localDate";
+import { localDate } from "../services/localDate";
 import { AnimalInterface } from "../services/interfaces";
 import AddAnimal from "../components/modals/modalAddAnimal/AddAnimal";
 
