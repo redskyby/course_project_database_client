@@ -11,11 +11,13 @@ import { SET_ANIMALS } from "../redux/slice/AnimalSlice";
 import { localDate } from "../services/localDate";
 import { AnimalInterface } from "../services/interfaces";
 import AddAnimal from "../components/modals/modalAddAnimal/AddAnimal";
+import EditAnimal from "../components/modals/modalAddAnimal/EditAnimal";
 
 const AnimalTable = () => {
     const dispatch = useDispatch();
     const animal: AnimalInterface[] = useSelector((state: RootState) => state.AnimalToolKit.animals);
-    const [show, setShow] = useState<boolean>(false);
+    const [showAddAnimal, setShowAddAnimal] = useState<boolean>(false);
+    const [showEditAnimal, setShowEditAnimal] = useState<boolean>(false);
     const [load, setLoad] = useState<boolean>(false);
 
     useEffect(() => {
@@ -36,7 +38,8 @@ const AnimalTable = () => {
             .finally(() => setLoad(false));
     }, [load !== false]);
 
-    const addAnimalModalShow = () => setShow(true);
+    const addAnimalModalShow = () => setShowAddAnimal(true);
+    const editAnimalModalShow = () => setShowEditAnimal(true);
 
     return (
         <Container>
@@ -47,7 +50,9 @@ const AnimalTable = () => {
                     </Button>
                 </Col>
                 <Col>
-                    <Button variant="primary">Редактировать</Button>
+                    <Button variant="primary" onClick={editAnimalModalShow}>
+                        Редактировать
+                    </Button>
                 </Col>
                 <Col>
                     <Button variant="primary">Удалить</Button>
@@ -104,7 +109,8 @@ const AnimalTable = () => {
             ) : (
                 <h2>Данные отсутствую или проверьте соединение с интернетом...</h2>
             )}
-            <AddAnimal show={show} setShow={setShow} setLoad={setLoad} />
+            <AddAnimal show={showAddAnimal} setShow={setShowAddAnimal} setLoad={setLoad} />
+            <EditAnimal show={showEditAnimal} setShow={setShowEditAnimal} setLoad={setLoad} />
         </Container>
     );
 };

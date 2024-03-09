@@ -17,6 +17,7 @@ export interface AnimalInterface {
 }
 
 export interface FormDatForAddAnimalModal {
+    id?: number;
     name: string;
     species: string;
     gender: string;
