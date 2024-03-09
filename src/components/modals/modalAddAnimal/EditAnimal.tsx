@@ -52,6 +52,7 @@ const EditAnimal = ({
         } else {
             // Создание объекта formData
             const formData: FormDatForAddAnimalModal = {
+                id,
                 name,
                 species,
                 gender,
@@ -67,7 +68,7 @@ const EditAnimal = ({
             };
             setShow(false);
 
-            AnimalApi.addAnimal(formData)
+            AnimalApi.editAnimal(formData)
                 .then(() => {
                     setShow(false);
                     setLoad(true);
