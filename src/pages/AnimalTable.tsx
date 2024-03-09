@@ -13,6 +13,7 @@ import { AnimalInterface } from "../services/interfaces";
 import AddAnimal from "../components/modals/modalAddAnimal/AddAnimal";
 import EditAnimal from "../components/modals/modalAddAnimal/EditAnimal";
 import DeleteAnimal from "../components/modals/modalAddAnimal/DeleteAnimal";
+import SortAnimal from "../components/modals/modalAddAnimal/SortAnimal";
 
 const AnimalTable = () => {
     const dispatch = useDispatch();
@@ -20,6 +21,7 @@ const AnimalTable = () => {
     const [showAddAnimal, setShowAddAnimal] = useState<boolean>(false);
     const [showEditAnimal, setShowEditAnimal] = useState<boolean>(false);
     const [showDeleteAnimal, setShowDeleteAnimal] = useState<boolean>(false);
+    const [showSortAnimal, setShowSortAnimal] = useState<boolean>(false);
     const [load, setLoad] = useState<boolean>(false);
 
     useEffect(() => {
@@ -43,6 +45,7 @@ const AnimalTable = () => {
     const addAnimalModalShow = () => setShowAddAnimal(true);
     const editAnimalModalShow = () => setShowEditAnimal(true);
     const deleteAnimalModalShow = () => setShowDeleteAnimal(true);
+    const sortAnimalModalShow = () => setShowSortAnimal(true);
 
     return (
         <Container>
@@ -63,7 +66,9 @@ const AnimalTable = () => {
                     </Button>
                 </Col>
                 <Col>
-                    <Button variant="primary">Фильтр</Button>
+                    <Button variant="primary" onClick={sortAnimalModalShow}>
+                        Фильтр
+                    </Button>
                 </Col>
             </Row>
             {animal.length !== 0 ? (
@@ -117,6 +122,7 @@ const AnimalTable = () => {
             <AddAnimal show={showAddAnimal} setShow={setShowAddAnimal} setLoad={setLoad} />
             <EditAnimal show={showEditAnimal} setShow={setShowEditAnimal} setLoad={setLoad} />
             <DeleteAnimal show={showDeleteAnimal} setShow={setShowDeleteAnimal} setLoad={setLoad} />
+            <SortAnimal show={showSortAnimal} setShow={setShowSortAnimal} setLoad={setLoad} />
         </Container>
     );
 };
