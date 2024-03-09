@@ -27,7 +27,7 @@ const DeleteAnimal = ({
             return;
         } else {
             setShow(false);
-            AnimalApi.editAnimal(formData)
+            AnimalApi.deleteAnimal(id)
                 .then(() => {
                     setShow(false);
                     setLoad(true);
