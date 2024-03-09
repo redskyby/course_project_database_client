@@ -22,22 +22,43 @@ const AddAnimal = ({ show, setShow }: { show: boolean; setShow: React.Dispatch<R
 
     const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
-        setShow(false);
-        const formData: FormDatForAddAnimalModal = {
-            name,
-            species,
-            gender,
-            height,
-            weight,
-            date,
-            age,
-            typeOfFeed,
-            naturalArea,
-            cageNum,
-            offspring,
-            numOffSpring,
-        };
-        console.log(formData); // Отправка данных, например, на сервер
+
+        // Проверка на пустые значения или отрицательные числа
+        if (
+            !name ||
+            !species ||
+            !gender ||
+            !height ||
+            !weight ||
+            !date ||
+            age <= 0 ||
+            cageNum <= 0 ||
+            offspring < 0 ||
+            numOffSpring < 0
+        ) {
+            // Можно вывести сообщение об ошибке или выполнить другие действия
+            alert("Пожалуйста, заполните все поля корректно.");
+            return;
+        } else {
+            // Создание объекта formData
+            const formData: FormDatForAddAnimalModal = {
+                name,
+                species,
+                gender,
+                height,
+                weight,
+                date,
+                age,
+                typeOfFeed,
+                naturalArea,
+                cageNum,
+                offspring,
+                numOffSpring,
+            };
+            setShow(false);
+            console.log(formData);
+            alert("Животное добавлено.");
+        }
     };
 
     return (
@@ -60,12 +81,11 @@ const AddAnimal = ({ show, setShow }: { show: boolean; setShow: React.Dispatch<R
                             </Form.Group>
                             <Form.Group controlId="species">
                                 <Form.Label>Species</Form.Label>
-                                <Form.Control
-                                    type="text"
-                                    value={species}
-                                    onChange={(e) => setSpecies(e.target.value)}
-                                    required
-                                />
+                                <Form.Select value={species} onChange={(e) => setSpecies(e.target.value)} required>
+                                    <option value="">Select Species</option>
+                                    <option value="predator">Predator</option>
+                                    <option value="herbivore">Herbivore</option>
+                                </Form.Select>
                             </Form.Group>
                             <Form.Group controlId="gender">
                                 <Form.Label>Gender</Form.Label>
@@ -133,12 +153,15 @@ const AddAnimal = ({ show, setShow }: { show: boolean; setShow: React.Dispatch<R
                             </Form.Group>
                             <Form.Group controlId="naturalArea">
                                 <Form.Label>Natural Area</Form.Label>
-                                <Form.Control
-                                    type="text"
+                                <Form.Select
                                     value={naturalArea}
                                     onChange={(e) => setNaturalArea(e.target.value)}
                                     required
-                                />
+                                >
+                                    <option value="">Select Natural Area</option>
+                                    <option value="forest">Forest</option>
+                                    <option value="grassland">Grassland</option>
+                                </Form.Select>
                             </Form.Group>
                             <Form.Group controlId="cageNum">
                                 <Form.Label>Cage Number</Form.Label>
