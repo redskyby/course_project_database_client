@@ -5,8 +5,17 @@ import Form from "react-bootstrap/Form";
 import { FormDatForAddAnimalModal } from "../../../services/interfaces";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
+import AnimalApi from "../../../api/AnimalApi";
 
-const AddAnimal = ({ show, setShow }: { show: boolean; setShow: React.Dispatch<React.SetStateAction<boolean>> }) => {
+const AddAnimal = ({
+    show,
+    setShow,
+    setLoad,
+}: {
+    show: boolean;
+    setShow: React.Dispatch<React.SetStateAction<boolean>>;
+    setLoad: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
     const [name, setName] = useState<string>("");
     const [species, setSpecies] = useState<string>("");
     const [gender, setGender] = useState<string>("");
@@ -56,8 +65,15 @@ const AddAnimal = ({ show, setShow }: { show: boolean; setShow: React.Dispatch<R
                 numOffSpring,
             };
             setShow(false);
-            console.log(formData);
-            alert("Животное добавлено.");
+
+            AnimalApi.addAnimal(formData)
+                .then(() => {
+                    setShow(false);
+                    setLoad(true);
+                })
+                .catch((e) => {
+                    console.log(e.message);
+                });
         }
     };
 

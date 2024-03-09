@@ -16,6 +16,7 @@ const AnimalTable = () => {
     const dispatch = useDispatch();
     const animal: AnimalInterface[] = useSelector((state: RootState) => state.AnimalToolKit.animals);
     const [show, setShow] = useState<boolean>(false);
+    const [load, setLoad] = useState<boolean>(false);
 
     useEffect(() => {
         AnimalApi.getAllAnimals()
@@ -24,6 +25,16 @@ const AnimalTable = () => {
             })
             .catch((e) => console.log(e.message));
     }, []);
+
+    useEffect(() => {
+        AnimalApi.getAllAnimals()
+            .then((data) => {
+                setLoad(false);
+                dispatch(SET_ANIMALS(data));
+            })
+            .catch((e) => console.log(e.message))
+            .finally(() => setLoad(false));
+    }, [load !== false]);
 
     const addAnimalModalShow = () => setShow(true);
 
@@ -93,7 +104,7 @@ const AnimalTable = () => {
             ) : (
                 <h2>Данные отсутствую или проверьте соединение с интернетом...</h2>
             )}
-            <AddAnimal show={show} setShow={setShow} />
+            <AddAnimal show={show} setShow={setShow} setLoad={setLoad} />
         </Container>
     );
 };
