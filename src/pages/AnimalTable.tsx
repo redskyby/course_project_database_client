@@ -36,7 +36,7 @@ const AnimalTable = () => {
             })
             .catch((e) => console.log(e.message))
             .finally(() => setLoad(false));
-    }, [load !== false]);
+    }, [load]);
 
     const addAnimalModalShow = () => setShowAddAnimal(true);
     const editAnimalModalShow = () => setShowEditAnimal(true);
