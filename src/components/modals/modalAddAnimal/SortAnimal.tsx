@@ -23,8 +23,9 @@ const SortAnimal = ({
 
     const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
-        AnimalApi.getAllAnimals()
+        AnimalApi.sortAnimals(sort)
             .then((data: AnimalInterface[]) => {
+                setShow(false);
                 setLoad(false);
                 dispatch(SET_ANIMALS(data));
             })

@@ -48,6 +48,17 @@ class AnimalApi {
             alert(e.response.data.message);
         }
     }
+
+    public async sortAnimals(sortBy: string) {
+        try {
+            const { data } = await $host.get(`api/animal/sortBy/?sort=${sortBy}`);
+            return data;
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        } catch (e: any) {
+            console.log(e.response.data);
+            alert(e.response.data.message);
+        }
+    }
 }
 
 export default new AnimalApi();
