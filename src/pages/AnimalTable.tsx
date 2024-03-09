@@ -12,12 +12,14 @@ import { localDate } from "../services/localDate";
 import { AnimalInterface } from "../services/interfaces";
 import AddAnimal from "../components/modals/modalAddAnimal/AddAnimal";
 import EditAnimal from "../components/modals/modalAddAnimal/EditAnimal";
+import DeleteAnimal from "../components/modals/modalAddAnimal/DeleteAnimal";
 
 const AnimalTable = () => {
     const dispatch = useDispatch();
     const animal: AnimalInterface[] = useSelector((state: RootState) => state.AnimalToolKit.animals);
     const [showAddAnimal, setShowAddAnimal] = useState<boolean>(false);
     const [showEditAnimal, setShowEditAnimal] = useState<boolean>(false);
+    const [showDeleteAnimal, setShowDeleteAnimal] = useState<boolean>(false);
     const [load, setLoad] = useState<boolean>(false);
 
     useEffect(() => {
@@ -30,7 +32,7 @@ const AnimalTable = () => {
 
     useEffect(() => {
         AnimalApi.getAllAnimals()
-            .then((data) => {
+            .then((data: AnimalInterface[]) => {
                 setLoad(false);
                 dispatch(SET_ANIMALS(data));
             })
@@ -40,6 +42,7 @@ const AnimalTable = () => {
 
     const addAnimalModalShow = () => setShowAddAnimal(true);
     const editAnimalModalShow = () => setShowEditAnimal(true);
+    const deleteAnimalModalShow = () => setShowDeleteAnimal(true);
 
     return (
         <Container>
@@ -55,7 +58,9 @@ const AnimalTable = () => {
                     </Button>
                 </Col>
                 <Col>
-                    <Button variant="primary">Удалить</Button>
+                    <Button variant="primary" onClick={deleteAnimalModalShow}>
+                        Удалить
+                    </Button>
                 </Col>
                 <Col>
                     <Button variant="primary">Фильтр</Button>
@@ -111,6 +116,7 @@ const AnimalTable = () => {
             )}
             <AddAnimal show={showAddAnimal} setShow={setShowAddAnimal} setLoad={setLoad} />
             <EditAnimal show={showEditAnimal} setShow={setShowEditAnimal} setLoad={setLoad} />
+            <DeleteAnimal show={showDeleteAnimal} setShow={setShowDeleteAnimal} setLoad={setLoad} />
         </Container>
     );
 };

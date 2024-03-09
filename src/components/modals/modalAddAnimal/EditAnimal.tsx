@@ -35,6 +35,7 @@ const EditAnimal = ({
 
         // Проверка на пустые значения или отрицательные числа
         if (
+            !id ||
             !name ||
             !species ||
             !gender ||
