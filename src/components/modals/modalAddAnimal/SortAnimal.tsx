@@ -57,7 +57,7 @@ const SortAnimal = ({
                                     <option value="typeOfFeed">Type of Feed</option>
                                     <option value="naturalArea">Natural Area</option>
                                     <option value="cageNum">Cage Number</option>
-                                    <option value="offspring">Offspring</option>
+                                    <option value="offSpring">Offspring</option>
                                     <option value="numOffSpring">Number of Offspring</option>
                                 </Form.Select>
                             </Form.Group>

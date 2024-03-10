@@ -10,7 +10,7 @@ export interface AnimalInterface {
     typeOfFeed: string;
     naturalArea: string;
     cageNum: number;
-    offspring: number;
+    offspring: boolean;
     numOffspring: number;
     idMale: number | null;
     idFemale: number | null;
@@ -28,6 +28,6 @@ export interface FormDatForAddAnimalModal {
     typeOfFeed: string;
     naturalArea: string;
     cageNum: number;
-    offspring: number;
+    offspring: boolean;
     numOffSpring: number;
 }

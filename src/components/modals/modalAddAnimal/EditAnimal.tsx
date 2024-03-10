@@ -27,7 +27,7 @@ const EditAnimal = ({
     const [typeOfFeed, setTypeOfFeed] = useState<string>("");
     const [naturalArea, setNaturalArea] = useState<string>("");
     const [cageNum, setCageNum] = useState<number>(0);
-    const [offspring, setOffspring] = useState<number>(0);
+    const [offspring, setOffspring] = useState<boolean>(false);
     const [numOffSpring, setNumOffSpring] = useState<number>(0);
 
     const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -44,7 +44,6 @@ const EditAnimal = ({
             !date ||
             age <= 0 ||
             cageNum <= 0 ||
-            offspring < 0 ||
             numOffSpring < 0
         ) {
             // Можно вывести сообщение об ошибке или выполнить другие действия
@@ -200,14 +199,18 @@ const EditAnimal = ({
                                     required
                                 />
                             </Form.Group>
-                            <Form.Group controlId="offspring">
-                                <Form.Label>Offspring</Form.Label>
+                            <Form.Group controlId="offSpring">
+                                <Form.Label>offSpring</Form.Label>
                                 <Form.Control
-                                    type="number"
-                                    value={offspring}
-                                    onChange={(e) => setOffspring(parseInt(e.target.value))}
+                                    as="select"
+                                    value={offspring.toString()} // Преобразуем булевое значение в строку
+                                    onChange={(e) => setOffspring(e.target.value === "true")} // Преобразуем строку обратно в булевое значение
                                     required
-                                />
+                                >
+                                    <option value="">Select Type of Feed</option>
+                                    <option value="false">false</option>
+                                    <option value="true">true</option>
+                                </Form.Control>
                             </Form.Group>
                             <Form.Group controlId="numOffSpring">
                                 <Form.Label>Number of Offspring</Form.Label>
