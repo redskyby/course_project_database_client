@@ -117,7 +117,7 @@ const AnimalTable = () => {
                     </tbody>
                 </Table>
             ) : (
-                <h2>Данные отсутствую или проверьте соединение с интернетом...</h2>
+                <h2>Данные отсутствуют или проверьте соединение с интернетом...</h2>
             )}
             <AddAnimal show={showAddAnimal} setShow={setShowAddAnimal} setLoad={setLoad} />
             <EditAnimal show={showEditAnimal} setShow={setShowEditAnimal} setLoad={setLoad} />
