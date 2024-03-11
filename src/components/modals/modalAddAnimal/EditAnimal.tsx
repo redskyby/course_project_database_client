@@ -2,7 +2,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
-import { FormDatForAddAnimalModal } from "../../../services/interfaces";
+import { FormDatForAddAnimalModal } from "../../../services/interfacesForAnimals";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import AnimalApi from "../../../api/AnimalApi";

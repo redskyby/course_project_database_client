@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { AnimalInterface } from "../../services/interfaces";
+import { AnimalInterface } from "../../services/interfacesForAnimals";
 
 const initialState = {
     animals: [] as AnimalInterface[],

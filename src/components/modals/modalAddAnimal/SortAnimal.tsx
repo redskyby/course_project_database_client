@@ -5,7 +5,7 @@ import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import AnimalApi from "../../../api/AnimalApi";
-import { AnimalInterface } from "../../../services/interfaces";
+import { AnimalInterface } from "../../../services/interfacesForAnimals";
 import { SET_ANIMALS } from "../../../redux/slice/AnimalSlice";
 import { useDispatch } from "react-redux";
 
