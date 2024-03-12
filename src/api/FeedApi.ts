@@ -16,7 +16,7 @@ class FeedApi {
 
     public async addFeed(feed: IntefracesForFeed) {
         try {
-            const { data } = await $host.post("api/animal/add", feed);
+            const { data } = await $host.post("api/feed/add", feed);
 
             return data;
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -28,7 +28,7 @@ class FeedApi {
 
     public async editFeed(feed: IntefracesForFeed) {
         try {
-            const { data } = await $host.put("api/animal/editAnimalById", feed);
+            const { data } = await $host.put("api/feed/editAnimalById", feed);
 
             return data;
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -40,7 +40,7 @@ class FeedApi {
 
     public async deleteFeed(id: number) {
         try {
-            const { data } = await $host.delete(`api/animal/delete/?id=${id}`);
+            const { data } = await $host.delete(`api/feed/delete/?id=${id}`);
             return data;
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (e: any) {
@@ -51,7 +51,7 @@ class FeedApi {
 
     public async sortFeed(sortBy: string) {
         try {
-            const { data } = await $host.get(`api/animal/sortBy/?sort=${sortBy}`);
+            const { data } = await $host.get(`api/feed/sortBy/?sort=${sortBy}`);
             return data;
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (e: any) {

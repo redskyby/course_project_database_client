@@ -1,9 +1,9 @@
 export interface IntefracesForFeed {
-    id: number;
+    id?: number;
     name: string;
     nameSupplier: string;
     typeOfFeed: string;
-    size: string;
+    size: number;
     price: number;
     date: string;
 }
