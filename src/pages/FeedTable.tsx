@@ -10,26 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux";
 
 const FeedTable = () => {
-    // const feeds: IntefracesForFeed[] = [
-    //     {
-    //         id: 1,
-    //         name: "Premium animal Food",
-    //         nameSupplier: "Pet Supplies Inc.",
-    //         typeOfFeed: "dry",
-    //         size: "medium",
-    //         price: 29.99,
-    //         date: "2024-03-10",
-    //     },
-    //     {
-    //         id: 2,
-    //         name: "Premium dog Food",
-    //         nameSupplier: "Pet Supplies Inc.",
-    //         typeOfFeed: "dry",
-    //         size: "medium",
-    //         price: 29.99,
-    //         date: "2024-03-10",
-    //     },
-    // ];
+   
     const dispatch = useDispatch();
     const feeds: IntefracesForFeed[] = useSelector((state: RootState) => state.FeedToolKit.feeds);
 
