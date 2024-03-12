@@ -1,11 +1,10 @@
 import { $host } from "./index";
-import {IntefracesForFeed} from "../services/intefracesForFeed";
-
+import { IntefracesForFeed } from "../services/intefracesForFeed";
 
 class FeedApi {
     public async getAllFeeds() {
         try {
-            const { data } = await $host.get("api/animal/getAll");
+            const { data } = await $host.get("api/feed/getAllFeed");
 
             return data;
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -15,7 +14,7 @@ class FeedApi {
         }
     }
 
-    public async addFeed(feed : IntefracesForFeed) {
+    public async addFeed(feed: IntefracesForFeed) {
         try {
             const { data } = await $host.post("api/animal/add", feed);
 
@@ -27,7 +26,7 @@ class FeedApi {
         }
     }
 
-    public async editFeed(feed : IntefracesForFeed) {
+    public async editFeed(feed: IntefracesForFeed) {
         try {
             const { data } = await $host.put("api/animal/editAnimalById", feed);
 

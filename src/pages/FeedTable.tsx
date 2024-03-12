@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import Table from "react-bootstrap/Table";
 import Row from "react-bootstrap/Row";
@@ -8,11 +8,20 @@ import { IntefracesForFeed } from "../services/intefracesForFeed";
 import { localDate } from "../services/localDate";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux";
+import FeedApi from "../api/FeedApi";
+import { SET_FEEDS } from "../redux/slice/FeedSlice";
 
 const FeedTable = () => {
-   
     const dispatch = useDispatch();
     const feeds: IntefracesForFeed[] = useSelector((state: RootState) => state.FeedToolKit.feeds);
+
+    useEffect(() => {
+        FeedApi.getAllFeeds()
+            .then((data: IntefracesForFeed[]) => {
+                dispatch(SET_FEEDS(data));
+            })
+            .catch((e) => console.log(e.message));
+    }, []);
 
     return (
         <Container>
