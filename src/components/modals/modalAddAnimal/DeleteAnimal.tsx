@@ -41,7 +41,7 @@ const DeleteAnimal = ({
     return (
         <Modal show={show} onHide={() => setShow(false)}>
             <Modal.Header closeButton>
-                <Modal.Title>Удалить животное животное</Modal.Title>
+                <Modal.Title>Удалить животное</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <Form>

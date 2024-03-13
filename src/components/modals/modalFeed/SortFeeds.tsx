@@ -1,15 +1,15 @@
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
 import React, { useState } from "react";
+import FeedApi from "../../../api/FeedApi";
+import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
-import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import AnimalApi from "../../../api/AnimalApi";
-import { AnimalInterface } from "../../../services/interfacesForAnimals";
-import { SET_ANIMALS } from "../../../redux/slice/AnimalSlice";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
 import { useDispatch } from "react-redux";
+import { SET_FEEDS } from "../../../redux/slice/FeedSlice";
+import { IntefracesForFeed } from "../../../services/intefracesForFeed";
 
-const SortAnimal = ({
+const SortFeeds = ({
     show,
     setShow,
     setLoad,
@@ -23,20 +23,22 @@ const SortAnimal = ({
 
     const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
-        AnimalApi.sortAnimals(sort)
-            .then((data: AnimalInterface[]) => {
+        FeedApi.sortFeed(sort)
+            .then((data: IntefracesForFeed[]) => {
                 setShow(false);
-                setLoad(false);
-                dispatch(SET_ANIMALS(data));
+                setLoad(true);
+                dispatch(SET_FEEDS(data));
             })
-            .catch((e) => console.log(e.message))
+            .catch((e) => {
+                console.log(e.message);
+            })
             .finally(() => setLoad(false));
     };
 
     return (
         <Modal show={show} onHide={() => setShow(false)}>
             <Modal.Header closeButton>
-                <Modal.Title>Сортировка</Modal.Title>
+                <Modal.Title>Сортировать по:</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <Form>
@@ -48,17 +50,11 @@ const SortAnimal = ({
                                     <option value="">Sort By</option>
                                     <option value="id">ID</option>
                                     <option value="name">Name</option>
-                                    <option value="species">Species</option>
-                                    <option value="gender">Gender</option>
-                                    <option value="height">Height</option>
-                                    <option value="weight">Weight</option>
+                                    <option value="nameSupplier">Name Supplier</option>
+                                    <option value="typeOfFeed">Type Of Feed</option>
+                                    <option value="size">Size</option>
+                                    <option value="price">Price</option>
                                     <option value="date">Date</option>
-                                    <option value="age">Age</option>
-                                    <option value="typeOfFeed">Type of Feed</option>
-                                    <option value="naturalArea">Natural Area</option>
-                                    <option value="cageNum">Cage Number</option>
-                                    <option value="offSpring">Offspring</option>
-                                    <option value="numOffSpring">Number of Offspring</option>
                                 </Form.Select>
                             </Form.Group>
                         </Col>
@@ -70,11 +66,11 @@ const SortAnimal = ({
                     Закрыть
                 </Button>
                 <Button variant="primary" onClick={(e) => handleSubmit(e)}>
-                    Отсортировать
+                    Сортировать
                 </Button>
             </Modal.Footer>
         </Modal>
     );
 };
 
-export default SortAnimal;
+export default SortFeeds;
