@@ -28,7 +28,7 @@ class FeedApi {
 
     public async editFeed(feed: IntefracesForFeed) {
         try {
-            const { data } = await $host.put("api/feed/editAnimalById", feed);
+            const { data } = await $host.put("api/feed/editFeedById", feed);
 
             return data;
             // eslint-disable-next-line @typescript-eslint/no-explicit-any

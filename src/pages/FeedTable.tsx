@@ -11,12 +11,14 @@ import { RootState } from "../redux";
 import FeedApi from "../api/FeedApi";
 import { SET_FEEDS } from "../redux/slice/FeedSlice";
 import AddNewFeed from "../components/modals/modalFeed/AddNewFeed";
+import EditFeed from "../components/modals/modalFeed/EditFeed";
 
 const FeedTable = () => {
     const dispatch = useDispatch();
     const feeds: IntefracesForFeed[] = useSelector((state: RootState) => state.FeedToolKit.feeds);
     const [load, setLoad] = useState<boolean>(false);
     const [showAddFeed, setShowAddFeed] = useState<boolean>(false);
+    const [showEditFeed, setShowEditFeed] = useState<boolean>(false);
 
     useEffect(() => {
         FeedApi.getAllFeeds()
@@ -37,6 +39,7 @@ const FeedTable = () => {
     }, [load]);
 
     const addFeedModalShow = () => setShowAddFeed(true);
+    const editFeedModalShow = () => setShowEditFeed(true);
 
     return (
         <Container>
@@ -47,7 +50,9 @@ const FeedTable = () => {
                     </Button>
                 </Col>
                 <Col>
-                    <Button variant="primary">Редактировать</Button>
+                    <Button variant="primary" onClick={editFeedModalShow}>
+                        Редактировать
+                    </Button>
                 </Col>
                 <Col>
                     <Button variant="primary">Удалить</Button>
@@ -89,6 +94,7 @@ const FeedTable = () => {
                 <h2>Данные отсутствуют или проверьте соединение с интернетом...</h2>
             )}
             <AddNewFeed show={showAddFeed} setShow={setShowAddFeed} setLoad={setLoad} />
+            <EditFeed show={showEditFeed} setShow={setShowEditFeed} setLoad={setLoad} />
         </Container>
     );
 };
