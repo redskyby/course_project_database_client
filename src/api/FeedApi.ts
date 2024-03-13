@@ -40,7 +40,7 @@ class FeedApi {
 
     public async deleteFeed(id: number) {
         try {
-            const { data } = await $host.delete(`api/feed/delete/?id=${id}`);
+            const { data } = await $host.delete(`api/feed/deleteFeed/?id=${id}`);
             return data;
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (e: any) {

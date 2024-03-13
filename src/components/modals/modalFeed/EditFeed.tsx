@@ -56,7 +56,7 @@ const EditFeed = ({
     return (
         <Modal show={show} onHide={() => setShow(false)}>
             <Modal.Header closeButton>
-                <Modal.Title>Добавить корм</Modal.Title>
+                <Modal.Title>Редактировать корм</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <Form>

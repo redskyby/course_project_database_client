@@ -12,6 +12,7 @@ import FeedApi from "../api/FeedApi";
 import { SET_FEEDS } from "../redux/slice/FeedSlice";
 import AddNewFeed from "../components/modals/modalFeed/AddNewFeed";
 import EditFeed from "../components/modals/modalFeed/EditFeed";
+import DeleteFeed from "../components/modals/modalFeed/DeleteFeed";
 
 const FeedTable = () => {
     const dispatch = useDispatch();
@@ -19,6 +20,7 @@ const FeedTable = () => {
     const [load, setLoad] = useState<boolean>(false);
     const [showAddFeed, setShowAddFeed] = useState<boolean>(false);
     const [showEditFeed, setShowEditFeed] = useState<boolean>(false);
+    const [showDeleteFeed, setShowDeleteFeed] = useState<boolean>(false);
 
     useEffect(() => {
         FeedApi.getAllFeeds()
@@ -40,6 +42,7 @@ const FeedTable = () => {
 
     const addFeedModalShow = () => setShowAddFeed(true);
     const editFeedModalShow = () => setShowEditFeed(true);
+    const deleteModalShow = () => setShowDeleteFeed(true);
 
     return (
         <Container>
@@ -55,7 +58,9 @@ const FeedTable = () => {
                     </Button>
                 </Col>
                 <Col>
-                    <Button variant="primary">Удалить</Button>
+                    <Button variant="primary" onClick={deleteModalShow}>
+                        Удалить
+                    </Button>
                 </Col>
                 <Col>
                     <Button variant="primary">Фильтр</Button>
@@ -95,6 +100,7 @@ const FeedTable = () => {
             )}
             <AddNewFeed show={showAddFeed} setShow={setShowAddFeed} setLoad={setLoad} />
             <EditFeed show={showEditFeed} setShow={setShowEditFeed} setLoad={setLoad} />
+            <DeleteFeed show={showDeleteFeed} setShow={setShowDeleteFeed} setLoad={setLoad} />
         </Container>
     );
 };
