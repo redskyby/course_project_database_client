@@ -7,10 +7,21 @@ import Button from "react-bootstrap/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux";
 import { InterfaceForPosition } from "../services/interfaceForPosition";
+import PositionApi from "../api/PositionApi";
+import { SET_POSITIONS } from "../redux/slice/PositionSlice";
 
 const PositionTable = () => {
+    const dispatch = useDispatch();
     const positions: InterfaceForPosition[] = useSelector((state: RootState) => state.PositionToolKit.positions);
     const [load, setLoad] = useState<boolean>(false);
+
+    useEffect(() => {
+        PositionApi.getAllPositions()
+            .then((data: InterfaceForPosition[]) => {
+                dispatch(SET_POSITIONS(data));
+            })
+            .catch((e) => console.log(e.message));
+    }, []);
 
     return (
         <Container>
@@ -46,7 +57,7 @@ const PositionTable = () => {
                                 <td>{position.id}</td>
                                 <td>{position.name}</td>
                                 <td>{position.salary}</td>
-                                <td>{position.access}</td>
+                                <td>{position.access !== 0 ? "true" : "false"}</td>
                             </tr>
                         ))}
                     </tbody>
