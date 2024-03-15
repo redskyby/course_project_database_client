@@ -10,12 +10,14 @@ import { InterfaceForPosition } from "../services/interfaceForPosition";
 import PositionApi from "../api/PositionApi";
 import { SET_POSITIONS } from "../redux/slice/PositionSlice";
 import AddPosition from "../components/modals/modalPosition/AddPosition";
+import DeletePosition from "../components/modals/modalPosition/DeletePosition";
 
 const PositionTable = () => {
     const dispatch = useDispatch();
     const positions: InterfaceForPosition[] = useSelector((state: RootState) => state.PositionToolKit.positions);
     const [load, setLoad] = useState<boolean>(false);
     const [showAddPosition, setShowAddPosition] = useState<boolean>(false);
+    const [showDeletePosition, setShowDeletePosition] = useState<boolean>(false);
 
     useEffect(() => {
         PositionApi.getAllPositions()
@@ -36,6 +38,7 @@ const PositionTable = () => {
     }, [load]);
 
     const addPositionModalShow = () => setShowAddPosition(true);
+    const deletePositionModalShow = () => setShowDeletePosition(true);
 
     return (
         <Container>
@@ -49,7 +52,9 @@ const PositionTable = () => {
                     <Button variant="primary">Редактировать</Button>
                 </Col>
                 <Col>
-                    <Button variant="primary">Удалить</Button>
+                    <Button variant="primary" onClick={deletePositionModalShow}>
+                        Удалить
+                    </Button>
                 </Col>
                 <Col>
                     <Button variant="primary">Фильтр</Button>
@@ -82,6 +87,7 @@ const PositionTable = () => {
                 <h2>Данные отсутствуют или проверьте соединение с интернетом...</h2>
             )}
             <AddPosition show={showAddPosition} setShow={setShowAddPosition} setLoad={setLoad} />
+            <DeletePosition show={showDeletePosition} setShow={setShowDeletePosition} setLoad={setLoad} />
         </Container>
     );
 };
