@@ -7,7 +7,7 @@ import Form from "react-bootstrap/Form";
 import { InterfaceForPosition } from "../../../services/interfaceForPosition";
 import PositionApi from "../../../api/PositionApi";
 
-const AddPosition = ({
+const EditPosition = ({
     show,
     setShow,
     setLoad,
@@ -16,6 +16,7 @@ const AddPosition = ({
     setShow: React.Dispatch<React.SetStateAction<boolean>>;
     setLoad: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
+    const [id, setId] = useState<number>(0);
     const [name, setName] = useState<string>("");
     const [salary, setSalary] = useState<number>(0);
     const [access, setAccess] = useState<number>(0);
@@ -23,18 +24,19 @@ const AddPosition = ({
     const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
 
-        if (!name || salary <= 0) {
+        if (id <= 0 || !name || salary <= 0) {
             alert("Пожалуйста, заполните все поля корректно.");
             return;
         } else {
             const formData: InterfaceForPosition = {
+                id,
                 name,
                 salary,
                 access,
             };
             setShow(false);
 
-            PositionApi.addPosition(formData)
+            PositionApi.editPosition(formData)
                 .then(() => {
                     setShow(false);
                     setLoad(true);
@@ -54,6 +56,15 @@ const AddPosition = ({
                 <Form>
                     <Row>
                         <Col>
+                            <Form.Group controlId="id">
+                                <Form.Label>Id</Form.Label>
+                                <Form.Control
+                                    type="number"
+                                    value={id}
+                                    onChange={(e) => setId(parseInt(e.target.value))}
+                                    required
+                                />
+                            </Form.Group>
                             <Form.Group controlId="name">
                                 <Form.Label>Name</Form.Label>
                                 <Form.Control
@@ -100,4 +111,4 @@ const AddPosition = ({
     );
 };
 
-export default AddPosition;
+export default EditPosition;

@@ -11,12 +11,14 @@ import PositionApi from "../api/PositionApi";
 import { SET_POSITIONS } from "../redux/slice/PositionSlice";
 import AddPosition from "../components/modals/modalPosition/AddPosition";
 import DeletePosition from "../components/modals/modalPosition/DeletePosition";
+import EditPosition from "../components/modals/modalPosition/EditPosition";
 
 const PositionTable = () => {
     const dispatch = useDispatch();
     const positions: InterfaceForPosition[] = useSelector((state: RootState) => state.PositionToolKit.positions);
     const [load, setLoad] = useState<boolean>(false);
     const [showAddPosition, setShowAddPosition] = useState<boolean>(false);
+    const [showEditPosition, setShowEditPosition] = useState<boolean>(false);
     const [showDeletePosition, setShowDeletePosition] = useState<boolean>(false);
 
     useEffect(() => {
@@ -38,6 +40,7 @@ const PositionTable = () => {
     }, [load]);
 
     const addPositionModalShow = () => setShowAddPosition(true);
+    const editPositionModalShow = () => setShowEditPosition(true);
     const deletePositionModalShow = () => setShowDeletePosition(true);
 
     return (
@@ -49,7 +52,9 @@ const PositionTable = () => {
                     </Button>
                 </Col>
                 <Col>
-                    <Button variant="primary">Редактировать</Button>
+                    <Button variant="primary" onClick={editPositionModalShow}>
+                        Редактировать
+                    </Button>
                 </Col>
                 <Col>
                     <Button variant="primary" onClick={deletePositionModalShow}>
@@ -87,6 +92,7 @@ const PositionTable = () => {
                 <h2>Данные отсутствуют или проверьте соединение с интернетом...</h2>
             )}
             <AddPosition show={showAddPosition} setShow={setShowAddPosition} setLoad={setLoad} />
+            <EditPosition show={showEditPosition} setShow={setShowEditPosition} setLoad={setLoad} />
             <DeletePosition show={showDeletePosition} setShow={setShowDeletePosition} setLoad={setLoad} />
         </Container>
     );

@@ -1,5 +1,4 @@
 import { $host } from "./index";
-import { IntefracesForFeed } from "../services/intefracesForFeed";
 import { InterfaceForPosition } from "../services/interfaceForPosition";
 
 class PositionApi {
@@ -27,9 +26,9 @@ class PositionApi {
         }
     }
 
-    public async editFeed(feed: IntefracesForFeed) {
+    public async editPosition(position: InterfaceForPosition) {
         try {
-            const { data } = await $host.put("api/position/editFeedById", feed);
+            const { data } = await $host.put("api/position/editPositionById", position);
 
             return data;
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
