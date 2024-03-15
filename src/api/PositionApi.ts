@@ -49,7 +49,7 @@ class PositionApi {
         }
     }
 
-    public async sortFeed(sortBy: string) {
+    public async sortPosition(sortBy: string) {
         try {
             const { data } = await $host.get(`api/position/sortBy/?sort=${sortBy}`);
             return data;

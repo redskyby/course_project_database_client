@@ -12,6 +12,7 @@ import { SET_POSITIONS } from "../redux/slice/PositionSlice";
 import AddPosition from "../components/modals/modalPosition/AddPosition";
 import DeletePosition from "../components/modals/modalPosition/DeletePosition";
 import EditPosition from "../components/modals/modalPosition/EditPosition";
+import SortPosition from "../components/modals/modalPosition/SortPosition";
 
 const PositionTable = () => {
     const dispatch = useDispatch();
@@ -20,6 +21,7 @@ const PositionTable = () => {
     const [showAddPosition, setShowAddPosition] = useState<boolean>(false);
     const [showEditPosition, setShowEditPosition] = useState<boolean>(false);
     const [showDeletePosition, setShowDeletePosition] = useState<boolean>(false);
+    const [showSortPosition, setShowSortPosition] = useState<boolean>(false);
 
     useEffect(() => {
         PositionApi.getAllPositions()
@@ -42,6 +44,7 @@ const PositionTable = () => {
     const addPositionModalShow = () => setShowAddPosition(true);
     const editPositionModalShow = () => setShowEditPosition(true);
     const deletePositionModalShow = () => setShowDeletePosition(true);
+    const sortPositionModalShow = () => setShowSortPosition(true);
 
     return (
         <Container>
@@ -62,7 +65,9 @@ const PositionTable = () => {
                     </Button>
                 </Col>
                 <Col>
-                    <Button variant="primary">Фильтр</Button>
+                    <Button variant="primary" onClick={sortPositionModalShow}>
+                        Фильтр
+                    </Button>
                 </Col>
             </Row>
             {positions.length !== 0 ? (
@@ -94,6 +99,7 @@ const PositionTable = () => {
             <AddPosition show={showAddPosition} setShow={setShowAddPosition} setLoad={setLoad} />
             <EditPosition show={showEditPosition} setShow={setShowEditPosition} setLoad={setLoad} />
             <DeletePosition show={showDeletePosition} setShow={setShowDeletePosition} setLoad={setLoad} />
+            <SortPosition show={showSortPosition} setShow={setShowSortPosition} setLoad={setLoad} />
         </Container>
     );
 };
