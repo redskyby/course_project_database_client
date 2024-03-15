@@ -1,5 +1,6 @@
 import { $host } from "./index";
 import { IntefracesForFeed } from "../services/intefracesForFeed";
+import { InterfaceForPosition } from "../services/interfaceForPosition";
 
 class PositionApi {
     public async getAllPositions() {
@@ -14,9 +15,9 @@ class PositionApi {
         }
     }
 
-    public async addFeed(feed: IntefracesForFeed) {
+    public async addPosition(position: InterfaceForPosition) {
         try {
-            const { data } = await $host.post("api/position/add", feed);
+            const { data } = await $host.post("api/position/add", position);
 
             return data;
             // eslint-disable-next-line @typescript-eslint/no-explicit-any

@@ -10,10 +10,10 @@ import { RootState } from "../redux";
 import { SET_ANIMALS } from "../redux/slice/AnimalSlice";
 import { localDate } from "../services/localDate";
 import { AnimalInterface } from "../services/interfacesForAnimals";
-import AddAnimal from "../components/modals/modalAddAnimal/AddAnimal";
-import EditAnimal from "../components/modals/modalAddAnimal/EditAnimal";
-import DeleteAnimal from "../components/modals/modalAddAnimal/DeleteAnimal";
-import SortAnimal from "../components/modals/modalAddAnimal/SortAnimal";
+import AddAnimal from "../components/modals/modalAnimal/AddAnimal";
+import EditAnimal from "../components/modals/modalAnimal/EditAnimal";
+import DeleteAnimal from "../components/modals/modalAnimal/DeleteAnimal";
+import SortAnimal from "../components/modals/modalAnimal/SortAnimal";
 
 const AnimalTable = () => {
     const dispatch = useDispatch();

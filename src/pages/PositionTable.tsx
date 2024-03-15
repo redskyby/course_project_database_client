@@ -9,11 +9,13 @@ import { RootState } from "../redux";
 import { InterfaceForPosition } from "../services/interfaceForPosition";
 import PositionApi from "../api/PositionApi";
 import { SET_POSITIONS } from "../redux/slice/PositionSlice";
+import AddPosition from "../components/modals/modalPosition/AddPosition";
 
 const PositionTable = () => {
     const dispatch = useDispatch();
     const positions: InterfaceForPosition[] = useSelector((state: RootState) => state.PositionToolKit.positions);
     const [load, setLoad] = useState<boolean>(false);
+    const [showAddPosition, setShowAddPosition] = useState<boolean>(false);
 
     useEffect(() => {
         PositionApi.getAllPositions()
@@ -23,11 +25,25 @@ const PositionTable = () => {
             .catch((e) => console.log(e.message));
     }, []);
 
+    useEffect(() => {
+        PositionApi.getAllPositions()
+            .then((data: InterfaceForPosition[]) => {
+                dispatch(SET_POSITIONS(data));
+                setLoad(false);
+            })
+            .catch((e) => console.log(e.message))
+            .finally(() => setLoad(false));
+    }, [load]);
+
+    const addPositionModalShow = () => setShowAddPosition(true);
+
     return (
         <Container>
             <Row className="mt-2" xs="auto">
                 <Col>
-                    <Button variant="primary">Добавить</Button>
+                    <Button variant="primary" onClick={addPositionModalShow}>
+                        Добавить
+                    </Button>
                 </Col>
                 <Col>
                     <Button variant="primary">Редактировать</Button>
@@ -65,6 +81,7 @@ const PositionTable = () => {
             ) : (
                 <h2>Данные отсутствуют или проверьте соединение с интернетом...</h2>
             )}
+            <AddPosition show={showAddPosition} setShow={setShowAddPosition} setLoad={setLoad} />
         </Container>
     );
 };
