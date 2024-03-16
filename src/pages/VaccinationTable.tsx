@@ -13,6 +13,7 @@ import { SET_VACCINATIONS } from "../redux/slice/VaccinationSlice";
 import AddVaccination from "../components/modals/modalVaccination/AddVaccination";
 import DeleteVaccination from "../components/modals/modalVaccination/DeleteVaccination";
 import SortVaccitanion from "../components/modals/modalVaccination/SortVaccitanion";
+import EditVaccination from "../components/modals/modalVaccination/EditVaccination";
 
 const VaccinationTable = () => {
     const dispatch = useDispatch();
@@ -98,6 +99,7 @@ const VaccinationTable = () => {
                 <h2>Данные отсутствуют или проверьте соединение с интернетом...</h2>
             )}
             <AddVaccination show={showAddVaccination} setShow={setShowAddVaccination} setLoad={setLoad} />
+            <EditVaccination show={showEditVaccination} setShow={setShowEditVaccination} setLoad={setLoad} />
             <DeleteVaccination show={showDeleteVaccination} setShow={setShowDeleteVaccination} setLoad={setLoad} />
             <SortVaccitanion show={showSortVaccination} setShow={setShowSortVaccination} setLoad={setLoad} />
         </Container>
