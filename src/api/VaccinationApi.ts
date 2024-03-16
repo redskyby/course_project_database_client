@@ -39,9 +39,14 @@ class VaccinationApi {
         }
     }
 
-    public async deletePosition(id: number) {
+    public async deleteVaccination(id: number, dateT: string) {
         try {
-            const { data } = await $host.delete(`api/vaccination/deletePosition/?id=${id}`);
+            const { data } = await $host.delete(`api/vaccination/deleteVaccination`, {
+                data: {
+                    date: dateT,
+                    idAnimal: id,
+                },
+            });
             return data;
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (e: any) {
