@@ -6,49 +6,40 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux";
-import { InterfaceForPosition } from "../services/interfaces/interfaceForPosition";
-import PositionApi from "../api/PositionApi";
-import { SET_POSITIONS } from "../redux/slice/PositionSlice";
 import { localDate } from "../services/localDate";
+import VaccinationApi from "../api/VaccinationApi";
+import { InterfaceForVaccination } from "../services/interfaces/interfaceForVaccination";
+import { SET_VACCINATIONS } from "../redux/slice/VaccinationSlice";
 
 const VaccinationTable = () => {
     const dispatch = useDispatch();
-    // const positions: InterfaceForPosition[] = useSelector((state: RootState) => state.PositionToolKit.positions);
-    const vaccinations = [
-        {
-            date: "2022-09-09",
-            name: "syper for cat",
-            idAnimal: 65,
-        },
-        {
-            date: "2022-09-09",
-            name: "syper for cat",
-            idAnimal: 67,
-        },
-    ];
+    const vaccinations: InterfaceForVaccination[] = useSelector(
+        (state: RootState) => state.VaccinationToolKit.vaccinations,
+    );
+
     const [load, setLoad] = useState<boolean>(false);
     const [showAddVaccination, setShowAddVaccination] = useState<boolean>(false);
     const [showEditVaccination, setShowEditVaccination] = useState<boolean>(false);
     const [showDeleteVaccination, setShowDeleteVaccination] = useState<boolean>(false);
     const [showSortVaccination, setShowSortVaccination] = useState<boolean>(false);
 
-    // useEffect(() => {
-    //     PositionApi.getAllPositions()
-    //         .then((data: InterfaceForPosition[]) => {
-    //             dispatch(SET_POSITIONS(data));
-    //         })
-    //         .catch((e) => console.log(e.message));
-    // }, []);
+    useEffect(() => {
+        VaccinationApi.getAllVaccinations()
+            .then((data: InterfaceForVaccination[]) => {
+                dispatch(SET_VACCINATIONS(data));
+            })
+            .catch((e) => console.log(e.message));
+    }, []);
 
-    // useEffect(() => {
-    //     PositionApi.getAllPositions()
-    //         .then((data: InterfaceForPosition[]) => {
-    //             dispatch(SET_POSITIONS(data));
-    //             setLoad(false);
-    //         })
-    //         .catch((e) => console.log(e.message))
-    //         .finally(() => setLoad(false));
-    // }, [load]);
+    useEffect(() => {
+        VaccinationApi.getAllVaccinations()
+            .then((data: InterfaceForVaccination[]) => {
+                dispatch(SET_VACCINATIONS(data));
+                setLoad(false);
+            })
+            .catch((e) => console.log(e.message))
+            .finally(() => setLoad(false));
+    }, [load]);
 
     const addVaccinationModalShow = () => setShowAddVaccination(true);
     const editVaccinationModalShow = () => setShowEditVaccination(true);
