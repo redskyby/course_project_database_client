@@ -55,7 +55,7 @@ class VaccinationApi {
         }
     }
 
-    public async sortPosition(sortBy: string) {
+    public async sortVaccination(sortBy: string) {
         try {
             const { data } = await $host.get(`api/vaccination/sortBy/?sort=${sortBy}`);
             return data;
