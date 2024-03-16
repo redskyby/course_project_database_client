@@ -6,7 +6,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux";
-import { InterfaceForPosition } from "../services/interfaceForPosition";
+import { InterfaceForPosition } from "../services/interfaces/interfaceForPosition";
 import PositionApi from "../api/PositionApi";
 import { SET_POSITIONS } from "../redux/slice/PositionSlice";
 import AddPosition from "../components/modals/modalPosition/AddPosition";

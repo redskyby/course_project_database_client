@@ -4,7 +4,7 @@ import Modal from "react-bootstrap/Modal";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Form from "react-bootstrap/Form";
-import { IntefracesForFeed } from "../../../services/intefracesForFeed";
+import { IntefracesForFeed } from "../../../services/interfaces/intefracesForFeed";
 import FeedApi from "../../../api/FeedApi";
 
 const AddNewFeed = ({

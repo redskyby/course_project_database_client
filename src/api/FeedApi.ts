@@ -1,5 +1,5 @@
 import { $host } from "./index";
-import { IntefracesForFeed } from "../services/intefracesForFeed";
+import { IntefracesForFeed } from "../services/interfaces/intefracesForFeed";
 
 class FeedApi {
     public async getAllFeeds() {

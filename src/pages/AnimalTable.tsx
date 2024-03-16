@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux";
 import { SET_ANIMALS } from "../redux/slice/AnimalSlice";
 import { localDate } from "../services/localDate";
-import { AnimalInterface } from "../services/interfacesForAnimals";
+import { AnimalInterface } from "../services/interfaces/interfacesForAnimals";
 import AddAnimal from "../components/modals/modalAnimal/AddAnimal";
 import EditAnimal from "../components/modals/modalAnimal/EditAnimal";
 import DeleteAnimal from "../components/modals/modalAnimal/DeleteAnimal";

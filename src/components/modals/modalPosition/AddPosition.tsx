@@ -4,7 +4,7 @@ import Modal from "react-bootstrap/Modal";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Form from "react-bootstrap/Form";
-import { InterfaceForPosition } from "../../../services/interfaceForPosition";
+import { InterfaceForPosition } from "../../../services/interfaces/interfaceForPosition";
 import PositionApi from "../../../api/PositionApi";
 
 const AddPosition = ({

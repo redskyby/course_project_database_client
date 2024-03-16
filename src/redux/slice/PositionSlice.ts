@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { InterfaceForPosition } from "../../services/interfaceForPosition";
+import { InterfaceForPosition } from "../../services/interfaces/interfaceForPosition";
 
 const initialState = {
     positions: [] as InterfaceForPosition[],

@@ -1,5 +1,5 @@
 import { $host } from "./index";
-import { InterfaceForPosition } from "../services/interfaceForPosition";
+import { InterfaceForPosition } from "../services/interfaces/interfaceForPosition";
 
 class PositionApi {
     public async getAllPositions() {

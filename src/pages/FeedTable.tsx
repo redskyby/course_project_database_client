@@ -4,7 +4,7 @@ import Table from "react-bootstrap/Table";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-import { IntefracesForFeed } from "../services/intefracesForFeed";
+import { IntefracesForFeed } from "../services/interfaces/intefracesForFeed";
 import { localDate } from "../services/localDate";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux";

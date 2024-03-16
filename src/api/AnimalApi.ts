@@ -1,5 +1,5 @@
 import { $host } from "./index";
-import { FormDatForAddAnimalModal } from "../services/interfacesForAnimals";
+import { FormDatForAddAnimalModal } from "../services/interfaces/interfacesForAnimals";
 
 class AnimalApi {
     public async getAllAnimals() {

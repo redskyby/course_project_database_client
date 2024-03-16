@@ -7,7 +7,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { useDispatch } from "react-redux";
 import { SET_FEEDS } from "../../../redux/slice/FeedSlice";
-import { IntefracesForFeed } from "../../../services/intefracesForFeed";
+import { IntefracesForFeed } from "../../../services/interfaces/intefracesForFeed";
 
 const SortFeeds = ({
     show,
