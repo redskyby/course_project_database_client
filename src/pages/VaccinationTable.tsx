@@ -10,6 +10,7 @@ import { localDate } from "../services/localDate";
 import VaccinationApi from "../api/VaccinationApi";
 import { InterfaceForVaccination } from "../services/interfaces/interfaceForVaccination";
 import { SET_VACCINATIONS } from "../redux/slice/VaccinationSlice";
+import AddVaccination from "../components/modals/modalVaccination/AddVaccination";
 
 const VaccinationTable = () => {
     const dispatch = useDispatch();
@@ -94,6 +95,7 @@ const VaccinationTable = () => {
             ) : (
                 <h2>Данные отсутствуют или проверьте соединение с интернетом...</h2>
             )}
+            <AddVaccination show={showAddVaccination} setShow={setShowAddVaccination} setLoad={setLoad} />
         </Container>
     );
 };

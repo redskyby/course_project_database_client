@@ -1,5 +1,6 @@
 import { $host } from "./index";
 import { InterfaceForPosition } from "../services/interfaces/interfaceForPosition";
+import { InterfaceForVaccination } from "../services/interfaces/interfaceForVaccination";
 
 class VaccinationApi {
     public async getAllVaccinations() {
@@ -14,9 +15,9 @@ class VaccinationApi {
         }
     }
 
-    public async addPosition(position: InterfaceForPosition) {
+    public async addVaccination(vaccination: InterfaceForVaccination) {
         try {
-            const { data } = await $host.post("api/vaccination/add", position);
+            const { data } = await $host.post("api/vaccination/add", vaccination);
 
             return data;
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
