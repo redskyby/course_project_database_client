@@ -9,7 +9,7 @@ import VaccinationApi from "../../../api/VaccinationApi";
 import { InterfaceForVaccination } from "../../../services/interfaces/interfaceForVaccination";
 import { SET_VACCINATIONS } from "../../../redux/slice/VaccinationSlice";
 
-const SortVaccitanion = ({
+const SortVaccination = ({
     show,
     setShow,
     setLoad,
@@ -69,4 +69,4 @@ const SortVaccitanion = ({
     );
 };
 
-export default SortVaccitanion;
+export default SortVaccination;
