@@ -1,5 +1,5 @@
 import AnimalTable from "../pages/AnimalTable";
-import {ANIMALS_ROUTE, FEEDS_ROUTE, ILLNESSES_ROUTE, POSITION_ROUTE, VACCINATION_ROUTE} from "./const";
+import { ANIMALS_ROUTE, FEEDS_ROUTE, ILLNESSES_ROUTE, POSITION_ROUTE, VACCINATION_ROUTE } from "./const";
 import FeedTable from "../pages/FeedTable";
 import PositionTable from "../pages/PositionTable";
 import VaccinationTable from "../pages/VaccinationTable";
