@@ -14,6 +14,7 @@ import EditVaccination from "../components/modals/modalVaccination/EditVaccinati
 import { SET_ILLNESSES } from "../redux/slice/IllnessesSlice";
 import { InterfacesForIllnesses } from "../services/interfaces/interfacesForIllnesses";
 import IllnessesApi from "../api/IllnessesApi";
+import AddIllnesses from "../components/modals/modalIllnesses/AddIllnesses";
 
 const IllnessesTable = () => {
     const dispatch = useDispatch();
@@ -96,7 +97,7 @@ const IllnessesTable = () => {
             ) : (
                 <h2>Данные отсутствуют или проверьте соединение с интернетом...</h2>
             )}
-            {/*<AddVaccination show={showAddIllnesses} setShow={setShowAddVaccination} setLoad={setLoad} />*/}
+            <AddIllnesses show={showAddIllnesses} setShow={setShowAddIllnesses} setLoad={setLoad} />
             {/*<EditVaccination show={showEditVaccination} setShow={setShowEditVaccination} setLoad={setLoad} />*/}
             {/*<DeleteVaccination show={showDeleteVaccination} setShow={setShowDeleteVaccination} setLoad={setLoad} />*/}
             {/*<SortVaccination show={showSortVaccination} setShow={setShowSortVaccination} setLoad={setLoad} />*/}
