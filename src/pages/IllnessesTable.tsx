@@ -7,13 +7,13 @@ import Button from "react-bootstrap/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux";
 import { localDate } from "../services/localDate";
-import SortVaccination from "../components/modals/modalVaccination/SortVaccination";
 import { SET_ILLNESSES } from "../redux/slice/IllnessesSlice";
 import { InterfacesForIllnesses } from "../services/interfaces/interfacesForIllnesses";
 import IllnessesApi from "../api/IllnessesApi";
 import AddIllnesses from "../components/modals/modalIllnesses/AddIllnesses";
 import DeleteIllnesses from "../components/modals/modalIllnesses/DeleteIllnesses";
 import EditIllnesses from "../components/modals/modalIllnesses/EditIllnesses";
+import SortIllnesses from "../components/modals/modalIllnesses/SortIllnesses";
 
 const IllnessesTable = () => {
     const dispatch = useDispatch();
@@ -99,7 +99,7 @@ const IllnessesTable = () => {
             <AddIllnesses show={showAddIllnesses} setShow={setShowAddIllnesses} setLoad={setLoad} />
             <EditIllnesses show={showEditIllnesses} setShow={setShowEditIllnesses} setLoad={setLoad} />
             <DeleteIllnesses show={showDeleteIllnesses} setShow={setShowDeleteIllnesses} setLoad={setLoad} />
-            {/*<SortVaccination show={showSortVaccination} setShow={setShowSortVaccination} setLoad={setLoad} />*/}
+            <SortIllnesses show={showSortIllnesses} setShow={setShowSortIllnesses} setLoad={setLoad} />
         </Container>
     );
 };
