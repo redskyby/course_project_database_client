@@ -7,15 +7,13 @@ import Button from "react-bootstrap/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux";
 import { localDate } from "../services/localDate";
-import AddVaccination from "../components/modals/modalVaccination/AddVaccination";
-import DeleteVaccination from "../components/modals/modalVaccination/DeleteVaccination";
 import SortVaccination from "../components/modals/modalVaccination/SortVaccination";
-import EditVaccination from "../components/modals/modalVaccination/EditVaccination";
 import { SET_ILLNESSES } from "../redux/slice/IllnessesSlice";
 import { InterfacesForIllnesses } from "../services/interfaces/interfacesForIllnesses";
 import IllnessesApi from "../api/IllnessesApi";
 import AddIllnesses from "../components/modals/modalIllnesses/AddIllnesses";
 import DeleteIllnesses from "../components/modals/modalIllnesses/DeleteIllnesses";
+import EditIllnesses from "../components/modals/modalIllnesses/EditIllnesses";
 
 const IllnessesTable = () => {
     const dispatch = useDispatch();
@@ -99,7 +97,7 @@ const IllnessesTable = () => {
                 <h2>Данные отсутствуют или проверьте соединение с интернетом...</h2>
             )}
             <AddIllnesses show={showAddIllnesses} setShow={setShowAddIllnesses} setLoad={setLoad} />
-            {/*<EditVaccination show={showEditVaccination} setShow={setShowEditVaccination} setLoad={setLoad} />*/}
+            <EditIllnesses show={showEditIllnesses} setShow={setShowEditIllnesses} setLoad={setLoad} />
             <DeleteIllnesses show={showDeleteIllnesses} setShow={setShowDeleteIllnesses} setLoad={setLoad} />
             {/*<SortVaccination show={showSortVaccination} setShow={setShowSortVaccination} setLoad={setLoad} />*/}
         </Container>
