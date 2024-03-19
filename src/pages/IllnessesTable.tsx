@@ -15,6 +15,7 @@ import { SET_ILLNESSES } from "../redux/slice/IllnessesSlice";
 import { InterfacesForIllnesses } from "../services/interfaces/interfacesForIllnesses";
 import IllnessesApi from "../api/IllnessesApi";
 import AddIllnesses from "../components/modals/modalIllnesses/AddIllnesses";
+import DeleteIllnesses from "../components/modals/modalIllnesses/DeleteIllnesses";
 
 const IllnessesTable = () => {
     const dispatch = useDispatch();
@@ -99,7 +100,7 @@ const IllnessesTable = () => {
             )}
             <AddIllnesses show={showAddIllnesses} setShow={setShowAddIllnesses} setLoad={setLoad} />
             {/*<EditVaccination show={showEditVaccination} setShow={setShowEditVaccination} setLoad={setLoad} />*/}
-            {/*<DeleteVaccination show={showDeleteVaccination} setShow={setShowDeleteVaccination} setLoad={setLoad} />*/}
+            <DeleteIllnesses show={showDeleteIllnesses} setShow={setShowDeleteIllnesses} setLoad={setLoad} />
             {/*<SortVaccination show={showSortVaccination} setShow={setShowSortVaccination} setLoad={setLoad} />*/}
         </Container>
     );
