@@ -1,15 +1,15 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { interfaceForZoos } from "../../services/interfaces/interfaceForZoos";
+import { InterfaceForZoos } from "../../services/interfaces/interfaceForZoos";
 
 const initialState = {
-    zoos: [] as interfaceForZoos[],
+    zoos: [] as InterfaceForZoos[],
 };
 
 const ZoosSlice = createSlice({
     name: "zoos",
     initialState,
     reducers: {
-        SET_ZOOS: (state, action: PayloadAction<interfaceForZoos[]>) => {
+        SET_ZOOS: (state, action: PayloadAction<InterfaceForZoos[]>) => {
             state.zoos = [...action.payload];
         },
     },

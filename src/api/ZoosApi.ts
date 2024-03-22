@@ -1,10 +1,10 @@
 import { $host } from "./index";
-import { InterfaceForFeed } from "../services/interfaces/interfaceForFeed";
+import { InterfaceForVaccination } from "../services/interfaces/interfaceForVaccination";
 
-class FeedApi {
-    public async getAllFeeds() {
+class ZoosApi {
+    public async getAllZoos() {
         try {
-            const { data } = await $host.get("api/feed/getAllFeed");
+            const { data } = await $host.get("api/zoos/getAllZoos");
 
             return data;
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -14,9 +14,9 @@ class FeedApi {
         }
     }
 
-    public async addFeed(feed: InterfaceForFeed) {
+    public async addVaccination(vaccination: InterfaceForVaccination) {
         try {
-            const { data } = await $host.post("api/feed/add", feed);
+            const { data } = await $host.post("api/zoos/add", vaccination);
 
             return data;
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -26,9 +26,9 @@ class FeedApi {
         }
     }
 
-    public async editFeed(feed: InterfaceForFeed) {
+    public async editVaccination(vaccination: InterfaceForVaccination) {
         try {
-            const { data } = await $host.put("api/feed/editFeedById", feed);
+            const { data } = await $host.put("api/zoos/editVaccinationById", vaccination);
 
             return data;
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -38,9 +38,14 @@ class FeedApi {
         }
     }
 
-    public async deleteFeed(id: number) {
+    public async deleteVaccination(id: number, dateT: string) {
         try {
-            const { data } = await $host.delete(`api/feed/deleteFeed/?id=${id}`);
+            const { data } = await $host.delete(`api/zoos/deleteVaccination`, {
+                data: {
+                    date: dateT,
+                    idAnimal: id,
+                },
+            });
             return data;
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (e: any) {
@@ -49,9 +54,9 @@ class FeedApi {
         }
     }
 
-    public async sortFeed(sortBy: string) {
+    public async sortVaccination(sortBy: string) {
         try {
-            const { data } = await $host.get(`api/feed/sortBy/?sort=${sortBy}`);
+            const { data } = await $host.get(`api/zoos/sortBy/?sort=${sortBy}`);
             return data;
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (e: any) {
@@ -61,4 +66,4 @@ class FeedApi {
     }
 }
 
-export default new FeedApi();
+export default new ZoosApi();

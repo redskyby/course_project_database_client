@@ -7,7 +7,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { useDispatch } from "react-redux";
 import { SET_FEEDS } from "../../../redux/slice/FeedSlice";
-import { IntefracesForFeed } from "../../../services/interfaces/intefracesForFeed";
+import { InterfaceForFeed } from "../../../services/interfaces/interfaceForFeed";
 
 const SortFeeds = ({
     show,
@@ -24,7 +24,7 @@ const SortFeeds = ({
     const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
         FeedApi.sortFeed(sort)
-            .then((data: IntefracesForFeed[]) => {
+            .then((data: InterfaceForFeed[]) => {
                 setShow(false);
                 setLoad(true);
                 dispatch(SET_FEEDS(data));

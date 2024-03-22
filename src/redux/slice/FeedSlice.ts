@@ -1,15 +1,15 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IntefracesForFeed } from "../../services/interfaces/intefracesForFeed";
+import { InterfaceForFeed } from "../../services/interfaces/interfaceForFeed";
 
 const initialState = {
-    feeds: [] as IntefracesForFeed[],
+    feeds: [] as InterfaceForFeed[],
 };
 
 const FeedSlice = createSlice({
     name: "feeds",
     initialState,
     reducers: {
-        SET_FEEDS: (state, action: PayloadAction<IntefracesForFeed[]>) => {
+        SET_FEEDS: (state, action: PayloadAction<InterfaceForFeed[]>) => {
             state.feeds = [...action.payload];
         },
     },

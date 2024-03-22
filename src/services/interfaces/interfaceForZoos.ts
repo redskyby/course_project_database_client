@@ -1,4 +1,4 @@
-export interface interfaceForZoos {
+export interface InterfaceForZoos {
     id: number;
     date: string;
     name: string;

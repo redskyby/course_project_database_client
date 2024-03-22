@@ -4,7 +4,7 @@ import Table from "react-bootstrap/Table";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-import { IntefracesForFeed } from "../services/interfaces/intefracesForFeed";
+import { InterfaceForFeed } from "../services/interfaces/interfaceForFeed";
 import { localDate } from "../services/localDate";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux";
@@ -17,7 +17,7 @@ import SortFeeds from "../components/modals/modalFeed/SortFeeds";
 
 const FeedTable = () => {
     const dispatch = useDispatch();
-    const feeds: IntefracesForFeed[] = useSelector((state: RootState) => state.FeedToolKit.feeds);
+    const feeds: InterfaceForFeed[] = useSelector((state: RootState) => state.FeedToolKit.feeds);
     const [load, setLoad] = useState<boolean>(false);
     const [showAddFeed, setShowAddFeed] = useState<boolean>(false);
     const [showEditFeed, setShowEditFeed] = useState<boolean>(false);
@@ -26,7 +26,7 @@ const FeedTable = () => {
 
     useEffect(() => {
         FeedApi.getAllFeeds()
-            .then((data: IntefracesForFeed[]) => {
+            .then((data: InterfaceForFeed[]) => {
                 dispatch(SET_FEEDS(data));
             })
             .catch((e) => console.log(e.message));
@@ -34,7 +34,7 @@ const FeedTable = () => {
 
     useEffect(() => {
         FeedApi.getAllFeeds()
-            .then((data: IntefracesForFeed[]) => {
+            .then((data: InterfaceForFeed[]) => {
                 dispatch(SET_FEEDS(data));
                 setLoad(false);
             })

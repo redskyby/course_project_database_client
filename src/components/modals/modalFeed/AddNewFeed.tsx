@@ -4,7 +4,7 @@ import Modal from "react-bootstrap/Modal";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Form from "react-bootstrap/Form";
-import { IntefracesForFeed } from "../../../services/interfaces/intefracesForFeed";
+import { InterfaceForFeed } from "../../../services/interfaces/interfaceForFeed";
 import FeedApi from "../../../api/FeedApi";
 
 const AddNewFeed = ({
@@ -30,7 +30,7 @@ const AddNewFeed = ({
             alert("Пожалуйста, заполните все поля корректно.");
             return;
         } else {
-            const formData: IntefracesForFeed = {
+            const formData: InterfaceForFeed = {
                 name,
                 nameSupplier,
                 typeOfFeed,

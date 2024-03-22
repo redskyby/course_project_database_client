@@ -1,4 +1,4 @@
-export interface IntefracesForFeed {
+export interface InterfaceForFeed {
     id?: number;
     name: string;
     nameSupplier: string;
