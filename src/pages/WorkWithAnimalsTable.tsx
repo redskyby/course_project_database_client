@@ -7,13 +7,13 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Table from "react-bootstrap/Table";
 import { localDate } from "../services/localDate";
-import AddZoo from "../components/modals/modalZoo/AddZoo";
 import EditZoo from "../components/modals/modalZoo/EditZoo";
 import DeleteZoo from "../components/modals/modalZoo/DeleteZoo";
 import SortZoo from "../components/modals/modalZoo/SortZoo";
 import { InterfaceForWorkWithAnimals } from "../services/interfaces/interfaceForWorkWithAnimals";
 import WorkWithAnimalsApi from "../api/WorkWithAnimalsApi";
 import { SET_WorkWitAnimals } from "../redux/slice/WorkWithAnimalSlice";
+import AddWorkWithAnimals from "../components/modals/WorkWithAnimalsTable/AddWorkWithAnimals";
 
 const WorkWithAnimalsTable = () => {
     const dispatch = useDispatch();
@@ -22,10 +22,10 @@ const WorkWithAnimalsTable = () => {
     );
 
     const [load, setLoad] = useState<boolean>(false);
-    const [showAddZoos, setShowAddZoos] = useState<boolean>(false);
-    const [showEditZoos, setShowEditZoos] = useState<boolean>(false);
-    const [showDeleteZoos, setShowDeleteZoos] = useState<boolean>(false);
-    const [showSortZoos, setShowSortZoos] = useState<boolean>(false);
+    const [showAddWorkWithAnimalsTable, setShowAddWorkWithAnimalsTable] = useState<boolean>(false);
+    const [showEditWorkWithAnimalsTable, setShowEditWorkWithAnimalsTable] = useState<boolean>(false);
+    const [showDeleteWorkWithAnimalsTable, setShowDeleteWorkWithAnimalsTable] = useState<boolean>(false);
+    const [showSortWorkWithAnimalsTable, setShowSortWorkWithAnimalsTable] = useState<boolean>(false);
 
     useEffect(() => {
         WorkWithAnimalsApi.getAllWorkWithAnimals()
@@ -45,31 +45,31 @@ const WorkWithAnimalsTable = () => {
             .finally(() => setLoad(false));
     }, [load]);
 
-    const addZoosModalShow = () => setShowAddZoos(true);
-    const editZoosModalShow = () => setShowEditZoos(true);
-    const deleteZoosModalShow = () => setShowDeleteZoos(true);
-    const sortZoosModalShow = () => setShowSortZoos(true);
+    const addWorkWithAnimalsTableModalShow = () => setShowAddWorkWithAnimalsTable(true);
+    const editWorkWithAnimalsTableModalShow = () => setShowEditWorkWithAnimalsTable(true);
+    const deleteWorkWithAnimalsTableModalShow = () => setShowDeleteWorkWithAnimalsTable(true);
+    const sortWorkWithAnimalsTableModalShow = () => setShowSortWorkWithAnimalsTable(true);
 
     return (
         <Container>
             <Row className="mt-2" xs="auto">
                 <Col>
-                    <Button variant="primary" onClick={addZoosModalShow}>
+                    <Button variant="primary" onClick={addWorkWithAnimalsTableModalShow}>
                         Добавить
                     </Button>
                 </Col>
                 <Col>
-                    <Button variant="primary" onClick={editZoosModalShow}>
+                    <Button variant="primary" onClick={editWorkWithAnimalsTableModalShow}>
                         Редактировать
                     </Button>
                 </Col>
                 <Col>
-                    <Button variant="primary" onClick={deleteZoosModalShow}>
+                    <Button variant="primary" onClick={deleteWorkWithAnimalsTableModalShow}>
                         Удалить
                     </Button>
                 </Col>
                 <Col>
-                    <Button variant="primary" onClick={sortZoosModalShow}>
+                    <Button variant="primary" onClick={sortWorkWithAnimalsTableModalShow}>
                         Фильтр
                     </Button>
                 </Col>
@@ -102,10 +102,18 @@ const WorkWithAnimalsTable = () => {
             ) : (
                 <h2>Данные отсутствуют или проверьте соединение с интернетом...</h2>
             )}
-            <AddZoo show={showAddZoos} setShow={setShowAddZoos} setLoad={setLoad} />
-            <EditZoo show={showEditZoos} setShow={setShowEditZoos} setLoad={setLoad} />
-            <DeleteZoo show={showDeleteZoos} setShow={setShowDeleteZoos} setLoad={setLoad} />
-            <SortZoo show={showSortZoos} setShow={setShowSortZoos} setLoad={setLoad} />
+            <AddWorkWithAnimals
+                show={showAddWorkWithAnimalsTable}
+                setShow={setShowAddWorkWithAnimalsTable}
+                setLoad={setLoad}
+            />
+            <EditZoo show={showEditWorkWithAnimalsTable} setShow={setShowEditWorkWithAnimalsTable} setLoad={setLoad} />
+            <DeleteZoo
+                show={showDeleteWorkWithAnimalsTable}
+                setShow={setShowDeleteWorkWithAnimalsTable}
+                setLoad={setLoad}
+            />
+            <SortZoo show={showSortWorkWithAnimalsTable} setShow={setShowSortWorkWithAnimalsTable} setLoad={setLoad} />
         </Container>
     );
 };
