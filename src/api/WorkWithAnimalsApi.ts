@@ -1,5 +1,4 @@
 import { $host } from "./index";
-import { InterfaceForZoos } from "../services/interfaces/interfaceForZoos";
 import { InterfaceForWorkWithAnimals } from "../services/interfaces/interfaceForWorkWithAnimals";
 
 class WorkWithAnimalsApi {
@@ -27,9 +26,9 @@ class WorkWithAnimalsApi {
         }
     }
 
-    public async editZoo(zoo: InterfaceForZoos) {
+    public async editWithAnimals(withAnimals: InterfaceForWorkWithAnimals) {
         try {
-            const { data } = await $host.put("api/workWithAnimals/editZooById", zoo);
+            const { data } = await $host.put("api/workWithAnimals/editWorkWithAnimalsById", withAnimals);
 
             return data;
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
