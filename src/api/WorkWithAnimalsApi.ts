@@ -54,7 +54,7 @@ class WorkWithAnimalsApi {
         }
     }
 
-    public async sortZoo(sortBy: string) {
+    public async sortWorkWithAnimals(sortBy: string) {
         try {
             const { data } = await $host.get(`api/workWithAnimals/sortBy/?sort=${sortBy}`);
             return data;

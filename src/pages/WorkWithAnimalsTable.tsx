@@ -8,12 +8,12 @@ import Button from "react-bootstrap/Button";
 import Table from "react-bootstrap/Table";
 import { localDate } from "../services/localDate";
 import EditZoo from "../components/modals/modalZoo/EditZoo";
-import SortZoo from "../components/modals/modalZoo/SortZoo";
 import { InterfaceForWorkWithAnimals } from "../services/interfaces/interfaceForWorkWithAnimals";
 import WorkWithAnimalsApi from "../api/WorkWithAnimalsApi";
 import { SET_WorkWitAnimals } from "../redux/slice/WorkWithAnimalSlice";
 import AddWorkWithAnimals from "../components/modals/WorkWithAnimalsTable/AddWorkWithAnimals";
 import DeleteWorkWithAnimals from "../components/modals/WorkWithAnimalsTable/DeleteWorkWithAnimals";
+import SortWorkWithAnimals from "../components/modals/WorkWithAnimalsTable/SortWorkWithAnimals";
 
 const WorkWithAnimalsTable = () => {
     const dispatch = useDispatch();
@@ -113,7 +113,11 @@ const WorkWithAnimalsTable = () => {
                 setShow={setShowDeleteWorkWithAnimalsTable}
                 setLoad={setLoad}
             />
-            <SortZoo show={showSortWorkWithAnimalsTable} setShow={setShowSortWorkWithAnimalsTable} setLoad={setLoad} />
+            <SortWorkWithAnimals
+                show={showSortWorkWithAnimalsTable}
+                setShow={setShowSortWorkWithAnimalsTable}
+                setLoad={setLoad}
+            />
         </Container>
     );
 };
