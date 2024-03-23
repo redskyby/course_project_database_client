@@ -1,5 +1,5 @@
 import { $host } from "./index";
-import { InterfaceForVaccination } from "../services/interfaces/interfaceForVaccination";
+import { InterfaceForZoos } from "../services/interfaces/interfaceForZoos";
 
 class ZoosApi {
     public async getAllZoos() {
@@ -14,9 +14,9 @@ class ZoosApi {
         }
     }
 
-    public async addZoo(vaccination: InterfaceForVaccination) {
+    public async addZoo(zoo: InterfaceForZoos) {
         try {
-            const { data } = await $host.post("api/zoos/add", vaccination);
+            const { data } = await $host.post("api/zoos/add", zoo);
 
             return data;
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -26,9 +26,9 @@ class ZoosApi {
         }
     }
 
-    public async editVaccination(vaccination: InterfaceForVaccination) {
+    public async editZoo(zoo: InterfaceForZoos) {
         try {
-            const { data } = await $host.put("api/zoos/editVaccinationById", vaccination);
+            const { data } = await $host.put("api/zoos/editZooById", zoo);
 
             return data;
             // eslint-disable-next-line @typescript-eslint/no-explicit-any

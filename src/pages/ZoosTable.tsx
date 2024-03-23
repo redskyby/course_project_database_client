@@ -8,12 +8,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux";
 import { localDate } from "../services/localDate";
 import SortVaccination from "../components/modals/modalVaccination/SortVaccination";
-import EditVaccination from "../components/modals/modalVaccination/EditVaccination";
 import ZoosApi from "../api/ZoosApi";
 import { InterfaceForZoos } from "../services/interfaces/interfaceForZoos";
 import { SET_ZOOS } from "../redux/slice/ZoosSlice";
 import AddZoo from "../components/modals/modalZoo/AddZoo";
 import DeleteZoo from "../components/modals/modalZoo/DeleteZoo";
+import EditZoo from "../components/modals/modalZoo/EditZoo";
 
 const ZoosTable = () => {
     const dispatch = useDispatch();
@@ -99,7 +99,7 @@ const ZoosTable = () => {
                 <h2>Данные отсутствуют или проверьте соединение с интернетом...</h2>
             )}
             <AddZoo show={showAddZoos} setShow={setShowAddZoos} setLoad={setLoad} />
-            <EditVaccination show={showEditZoos} setShow={setShowEditZoos} setLoad={setLoad} />
+            <EditZoo show={showEditZoos} setShow={setShowEditZoos} setLoad={setLoad} />
             <DeleteZoo show={showDeleteZoos} setShow={setShowDeleteZoos} setLoad={setLoad} />
             <SortVaccination show={showSortZoos} setShow={setShowSortZoos} setLoad={setLoad} />
         </Container>
