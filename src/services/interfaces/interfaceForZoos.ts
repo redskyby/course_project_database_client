@@ -1,5 +1,5 @@
 export interface InterfaceForZoos {
-    id: number;
+    id?: number;
     date: string;
     name: string;
     idAnimal: number;

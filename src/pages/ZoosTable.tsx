@@ -7,15 +7,13 @@ import Button from "react-bootstrap/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux";
 import { localDate } from "../services/localDate";
-import VaccinationApi from "../api/VaccinationApi";
-import { SET_VACCINATIONS } from "../redux/slice/VaccinationSlice";
-import AddVaccination from "../components/modals/modalVaccination/AddVaccination";
-import DeleteVaccination from "../components/modals/modalVaccination/DeleteVaccination";
 import SortVaccination from "../components/modals/modalVaccination/SortVaccination";
 import EditVaccination from "../components/modals/modalVaccination/EditVaccination";
 import ZoosApi from "../api/ZoosApi";
 import { InterfaceForZoos } from "../services/interfaces/interfaceForZoos";
 import { SET_ZOOS } from "../redux/slice/ZoosSlice";
+import AddZoo from "../components/modals/modalZoo/AddZoo";
+import DeleteZoo from "../components/modals/modalZoo/DeleteZoo";
 
 const ZoosTable = () => {
     const dispatch = useDispatch();
@@ -36,9 +34,9 @@ const ZoosTable = () => {
     }, []);
 
     useEffect(() => {
-        VaccinationApi.getAllVaccinations()
+        ZoosApi.getAllZoos()
             .then((data: InterfaceForZoos[]) => {
-                dispatch(SET_VACCINATIONS(data));
+                dispatch(SET_ZOOS(data));
                 setLoad(false);
             })
             .catch((e) => console.log(e.message))
@@ -79,6 +77,7 @@ const ZoosTable = () => {
                     <thead>
                         <tr>
                             <th>#</th>
+                            <th>id</th>
                             <th>date</th>
                             <th>name</th>
                             <th>idAnimal</th>
@@ -87,6 +86,7 @@ const ZoosTable = () => {
                     <tbody>
                         {zoos.map((zoo, index) => (
                             <tr key={index}>
+                                <td>{index}</td>
                                 <td>{zoo.id}</td>
                                 <td>{localDate(zoo.date)}</td>
                                 <td>{zoo.name}</td>
@@ -98,9 +98,9 @@ const ZoosTable = () => {
             ) : (
                 <h2>Данные отсутствуют или проверьте соединение с интернетом...</h2>
             )}
-            <AddVaccination show={showAddZoos} setShow={setShowAddZoos} setLoad={setLoad} />
+            <AddZoo show={showAddZoos} setShow={setShowAddZoos} setLoad={setLoad} />
             <EditVaccination show={showEditZoos} setShow={setShowEditZoos} setLoad={setLoad} />
-            <DeleteVaccination show={showDeleteZoos} setShow={setShowDeleteZoos} setLoad={setLoad} />
+            <DeleteZoo show={showDeleteZoos} setShow={setShowDeleteZoos} setLoad={setLoad} />
             <SortVaccination show={showSortZoos} setShow={setShowSortZoos} setLoad={setLoad} />
         </Container>
     );

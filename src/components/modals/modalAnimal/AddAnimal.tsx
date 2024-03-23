@@ -26,7 +26,7 @@ const AddAnimal = ({
     const [typeOfFeed, setTypeOfFeed] = useState<string>("");
     const [naturalArea, setNaturalArea] = useState<string>("");
     const [cageNum, setCageNum] = useState<number>(0);
-    const [offspring, setOffSpring] = useState<boolean>(false);
+    const [offspring, setOffspring] = useState<boolean>(false);
     const [numOffSpring, setNumOffSpring] = useState<number>(0);
 
     const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -191,8 +191,8 @@ const AddAnimal = ({
                                 <Form.Label>Offspring</Form.Label>
                                 <Form.Control
                                     as="select"
-                                    value={offspring.toString()} // Преобразуем булевое значение в строку
-                                    onChange={(e) => setOffSpring(e.target.value === "true")} // Преобразуем строку обратно в булевое значение
+                                    value={offspring.toString()} // Преобразуем булево значение в строку
+                                    onChange={(e) => setOffspring(e.target.value === "true")} // Преобразуем строку обратно в булевое значение
                                     required
                                 >
                                     <option value="">Select Type of Feed</option>

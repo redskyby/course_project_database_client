@@ -14,7 +14,7 @@ class ZoosApi {
         }
     }
 
-    public async addVaccination(vaccination: InterfaceForVaccination) {
+    public async addZoo(vaccination: InterfaceForVaccination) {
         try {
             const { data } = await $host.post("api/zoos/add", vaccination);
 
@@ -38,9 +38,9 @@ class ZoosApi {
         }
     }
 
-    public async deleteVaccination(id: number, dateT: string) {
+    public async deleteZoo(id: number, dateT: string) {
         try {
-            const { data } = await $host.delete(`api/zoos/deleteVaccination`, {
+            const { data } = await $host.delete(`api/zoos/deleteZoo`, {
                 data: {
                     date: dateT,
                     idAnimal: id,
