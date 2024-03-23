@@ -1,10 +1,19 @@
 import AnimalTable from "../pages/AnimalTable";
-import { ANIMALS_ROUTE, FEEDS_ROUTE, ILLNESSES_ROUTE, POSITION_ROUTE, VACCINATION_ROUTE, ZOOS_ROUTE } from "./const";
+import {
+    ANIMALS_ROUTE,
+    FEEDS_ROUTE,
+    ILLNESSES_ROUTE,
+    POSITION_ROUTE,
+    VACCINATION_ROUTE,
+    WORK_WITH_ANIMALS_ROUTE,
+    ZOOS_ROUTE,
+} from "./const";
 import FeedTable from "../pages/FeedTable";
 import PositionTable from "../pages/PositionTable";
 import VaccinationTable from "../pages/VaccinationTable";
 import IllnessesTable from "../pages/IllnessesTable";
 import ZoosTable from "../pages/ZoosTable";
+import WorkWithAnimalsTable from "../pages/WorkWithAnimalsTable";
 
 export const publicRoutes: { path: string; Component: React.FC }[] = [
     {
@@ -30,5 +39,9 @@ export const publicRoutes: { path: string; Component: React.FC }[] = [
     {
         path: ZOOS_ROUTE,
         Component: ZoosTable,
+    },
+    {
+        path: WORK_WITH_ANIMALS_ROUTE,
+        Component: WorkWithAnimalsTable,
     },
 ];
