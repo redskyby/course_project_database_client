@@ -54,7 +54,7 @@ class ZoosApi {
         }
     }
 
-    public async sortVaccination(sortBy: string) {
+    public async sortZoo(sortBy: string) {
         try {
             const { data } = await $host.get(`api/zoos/sortBy/?sort=${sortBy}`);
             return data;

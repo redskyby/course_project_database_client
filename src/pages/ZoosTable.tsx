@@ -7,13 +7,13 @@ import Button from "react-bootstrap/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux";
 import { localDate } from "../services/localDate";
-import SortVaccination from "../components/modals/modalVaccination/SortVaccination";
 import ZoosApi from "../api/ZoosApi";
 import { InterfaceForZoos } from "../services/interfaces/interfaceForZoos";
 import { SET_ZOOS } from "../redux/slice/ZoosSlice";
 import AddZoo from "../components/modals/modalZoo/AddZoo";
 import DeleteZoo from "../components/modals/modalZoo/DeleteZoo";
 import EditZoo from "../components/modals/modalZoo/EditZoo";
+import SortZoo from "../components/modals/modalZoo/SortZoo";
 
 const ZoosTable = () => {
     const dispatch = useDispatch();
@@ -101,7 +101,7 @@ const ZoosTable = () => {
             <AddZoo show={showAddZoos} setShow={setShowAddZoos} setLoad={setLoad} />
             <EditZoo show={showEditZoos} setShow={setShowEditZoos} setLoad={setLoad} />
             <DeleteZoo show={showDeleteZoos} setShow={setShowDeleteZoos} setLoad={setLoad} />
-            <SortVaccination show={showSortZoos} setShow={setShowSortZoos} setLoad={setLoad} />
+            <SortZoo show={showSortZoos} setShow={setShowSortZoos} setLoad={setLoad} />
         </Container>
     );
 };
