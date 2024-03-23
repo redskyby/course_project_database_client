@@ -39,11 +39,10 @@ class WorkWithAnimalsApi {
         }
     }
 
-    public async deleteZoo(id: number, dateT: string) {
+    public async deleteWorkWithAnimal(id: number) {
         try {
-            const { data } = await $host.delete(`api/workWithAnimals/deleteZoo`, {
+            const { data } = await $host.delete(`api/workWithAnimals/deleteWorkWithAnimals`, {
                 data: {
-                    date: dateT,
                     idAnimal: id,
                 },
             });
