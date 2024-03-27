@@ -2,9 +2,9 @@ import { $host } from "./index";
 import { InterfaceForZoos } from "../services/interfaces/interfaceForZoos";
 
 class EmployeesApi {
-    public async getAllZoos() {
+    public async getAllEmployees() {
         try {
-            const { data } = await $host.get("api/zoos/getAllZoos");
+            const { data } = await $host.get("api/employees/getAll");
 
             return data;
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -16,7 +16,7 @@ class EmployeesApi {
 
     public async addZoo(zoo: InterfaceForZoos) {
         try {
-            const { data } = await $host.post("api/zoos/add", zoo);
+            const { data } = await $host.post("api/employees/add", zoo);
 
             return data;
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -28,7 +28,7 @@ class EmployeesApi {
 
     public async editZoo(zoo: InterfaceForZoos) {
         try {
-            const { data } = await $host.put("api/zoos/editZooById", zoo);
+            const { data } = await $host.put("api/employees/editZooById", zoo);
 
             return data;
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -40,7 +40,7 @@ class EmployeesApi {
 
     public async deleteZoo(id: number, dateT: string) {
         try {
-            const { data } = await $host.delete(`api/zoos/deleteZoo`, {
+            const { data } = await $host.delete(`api/employees/deleteZoo`, {
                 data: {
                     date: dateT,
                     idAnimal: id,
@@ -56,7 +56,7 @@ class EmployeesApi {
 
     public async sortZoo(sortBy: string) {
         try {
-            const { data } = await $host.get(`api/zoos/sortBy/?sort=${sortBy}`);
+            const { data } = await $host.get(`api/employees/sortBy/?sort=${sortBy}`);
             return data;
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (e: any) {

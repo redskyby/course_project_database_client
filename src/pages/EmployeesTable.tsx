@@ -26,7 +26,7 @@ const EmployeesTable = () => {
     const [showSortEmployees, setShowSortEmployees] = useState<boolean>(false);
 
     useEffect(() => {
-        EmployeesApi.getAllZoos()
+        EmployeesApi.getAllEmployees()
             .then((data: InterfaceForEmployees[]) => {
                 dispatch(SET_EMPLOYEES(data));
             })
@@ -34,7 +34,7 @@ const EmployeesTable = () => {
     }, []);
 
     useEffect(() => {
-        EmployeesApi.getAllZoos()
+        EmployeesApi.getAllEmployees()
             .then((data: InterfaceForEmployees[]) => {
                 dispatch(SET_EMPLOYEES(data));
                 setLoad(false);
