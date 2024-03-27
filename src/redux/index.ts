@@ -6,6 +6,7 @@ import vaccinations from "./slice/VaccinationSlice";
 import illnesses from "./slice/IllnessesSlice";
 import zoos from "./slice/ZoosSlice";
 import workWithAnimals from "./slice/WorkWithAnimalSlice";
+import employees from "./slice/EmployeesSlice";
 
 const rootReducer = combineReducers({
     AnimalToolKit: animals,
@@ -13,8 +14,9 @@ const rootReducer = combineReducers({
     PositionToolKit: positions,
     VaccinationToolKit: vaccinations,
     IllnessesToolKit: illnesses,
-    ZoosToolkit: zoos,
-    WorkWithAnimals: workWithAnimals,
+    ZoosToolKit: zoos,
+    WorkWithAnimalsToolKit: workWithAnimals,
+    EmployeesToolKit: employees,
 });
 
 export const store = configureStore({

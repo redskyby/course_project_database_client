@@ -17,7 +17,7 @@ import SortZoo from "../components/modals/modalZoo/SortZoo";
 
 const ZoosTable = () => {
     const dispatch = useDispatch();
-    const zoos: InterfaceForZoos[] = useSelector((state: RootState) => state.ZoosToolkit.zoos);
+    const zoos: InterfaceForZoos[] = useSelector((state: RootState) => state.ZoosToolKit.zoos);
 
     const [load, setLoad] = useState<boolean>(false);
     const [showAddZoos, setShowAddZoos] = useState<boolean>(false);

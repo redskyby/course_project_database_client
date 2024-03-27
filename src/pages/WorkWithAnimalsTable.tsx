@@ -18,7 +18,7 @@ import EditWorkWithAnimals from "../components/modals/WorkWithAnimalsTable/EditW
 const WorkWithAnimalsTable = () => {
     const dispatch = useDispatch();
     const workWithAnimals: InterfaceForWorkWithAnimals[] = useSelector(
-        (state: RootState) => state.WorkWithAnimals.workWithAnimals,
+        (state: RootState) => state.WorkWithAnimalsToolKit.workWithAnimals,
     );
 
     const [load, setLoad] = useState<boolean>(false);
