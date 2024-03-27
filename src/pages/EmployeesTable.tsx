@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { InterfaceForZoos } from "../services/interfaces/interfaceForZoos";
 import { RootState } from "../redux";
-import { SET_ZOOS } from "../redux/slice/ZoosSlice";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -14,83 +12,91 @@ import EditZoo from "../components/modals/modalZoo/EditZoo";
 import DeleteZoo from "../components/modals/modalZoo/DeleteZoo";
 import SortZoo from "../components/modals/modalZoo/SortZoo";
 import EmployeesApi from "../api/EmployeesApi";
+import { InterfaceForEmployees } from "../services/interfaces/interfaceForEmployees";
+import { SET_EMPLOYEES } from "../redux/slice/EmployeesSlice";
 
 const EmployeesTable = () => {
     const dispatch = useDispatch();
-    const zoos: InterfaceForZoos[] = useSelector((state: RootState) => state.ZoosToolKit.zoos);
+    const employees: InterfaceForEmployees[] = useSelector((state: RootState) => state.EmployeesToolKit.employees);
 
     const [load, setLoad] = useState<boolean>(false);
-    const [showAddZoos, setShowAddZoos] = useState<boolean>(false);
-    const [showEditZoos, setShowEditZoos] = useState<boolean>(false);
-    const [showDeleteZoos, setShowDeleteZoos] = useState<boolean>(false);
-    const [showSortZoos, setShowSortZoos] = useState<boolean>(false);
+    const [showAddEmployees, setShowAddEmployees] = useState<boolean>(false);
+    const [showEditEmployees, setShowEditEmployees] = useState<boolean>(false);
+    const [showDeleteEmployees, setShowDeleteEmployees] = useState<boolean>(false);
+    const [showSortEmployees, setShowSortEmployees] = useState<boolean>(false);
 
     useEffect(() => {
         EmployeesApi.getAllZoos()
-            .then((data: InterfaceForZoos[]) => {
-                dispatch(SET_ZOOS(data));
+            .then((data: InterfaceForEmployees[]) => {
+                dispatch(SET_EMPLOYEES(data));
             })
             .catch((e) => console.log(e.message));
     }, []);
 
     useEffect(() => {
         EmployeesApi.getAllZoos()
-            .then((data: InterfaceForZoos[]) => {
-                dispatch(SET_ZOOS(data));
+            .then((data: InterfaceForEmployees[]) => {
+                dispatch(SET_EMPLOYEES(data));
                 setLoad(false);
             })
             .catch((e) => console.log(e.message))
             .finally(() => setLoad(false));
     }, [load]);
 
-    const addZoosModalShow = () => setShowAddZoos(true);
-    const editZoosModalShow = () => setShowEditZoos(true);
-    const deleteZoosModalShow = () => setShowDeleteZoos(true);
-    const sortZoosModalShow = () => setShowSortZoos(true);
+    const addEmployeesModalShow = () => setShowAddEmployees(true);
+    const editEmployeesModalShow = () => setShowEditEmployees(true);
+    const deleteEmployeesModalShow = () => setShowDeleteEmployees(true);
+    const sortEmployeesModalShow = () => setShowSortEmployees(true);
 
     return (
         <Container>
             <Row className="mt-2" xs="auto">
                 <Col>
-                    <Button variant="primary" onClick={addZoosModalShow}>
+                    <Button variant="primary" onClick={addEmployeesModalShow}>
                         Добавить
                     </Button>
                 </Col>
                 <Col>
-                    <Button variant="primary" onClick={editZoosModalShow}>
+                    <Button variant="primary" onClick={editEmployeesModalShow}>
                         Редактировать
                     </Button>
                 </Col>
                 <Col>
-                    <Button variant="primary" onClick={deleteZoosModalShow}>
+                    <Button variant="primary" onClick={deleteEmployeesModalShow}>
                         Удалить
                     </Button>
                 </Col>
                 <Col>
-                    <Button variant="primary" onClick={sortZoosModalShow}>
+                    <Button variant="primary" onClick={sortEmployeesModalShow}>
                         Фильтр
                     </Button>
                 </Col>
             </Row>
-            {zoos.length !== 0 ? (
+            {employees.length !== 0 ? (
                 <Table striped bordered hover responsive className="mt-2">
                     <thead>
                         <tr>
                             <th>#</th>
                             <th>id</th>
-                            <th>date</th>
                             <th>name</th>
-                            <th>idAnimal</th>
+                            <th>surname</th>
+                            <th>gender</th>
+                            <th>Id Position</th>
+                            <th>date</th>
+                            <th>age</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {zoos.map((zoo, index) => (
+                        {employees.map((employee, index) => (
                             <tr key={index}>
                                 <td>{index}</td>
-                                <td>{zoo.id}</td>
-                                <td>{localDate(zoo.date)}</td>
-                                <td>{zoo.name}</td>
-                                <td>{zoo.idAnimal}</td>
+                                <td>{employee.id}</td>
+                                <td>{employee.name}</td>
+                                <td>{employee.surname}</td>
+                                <td>{employee.gender}</td>
+                                <td>{employee.idPosition}</td>
+                                <td>{localDate(employee.date)}</td>
+                                <td>{employee.age}</td>
                             </tr>
                         ))}
                     </tbody>
@@ -98,10 +104,10 @@ const EmployeesTable = () => {
             ) : (
                 <h2>Данные отсутствуют или проверьте соединение с интернетом...</h2>
             )}
-            <AddZoo show={showAddZoos} setShow={setShowAddZoos} setLoad={setLoad} />
-            <EditZoo show={showEditZoos} setShow={setShowEditZoos} setLoad={setLoad} />
-            <DeleteZoo show={showDeleteZoos} setShow={setShowDeleteZoos} setLoad={setLoad} />
-            <SortZoo show={showSortZoos} setShow={setShowSortZoos} setLoad={setLoad} />
+            <AddZoo show={showAddEmployees} setShow={setShowAddEmployees} setLoad={setLoad} />
+            <EditZoo show={showEditEmployees} setShow={setShowEditEmployees} setLoad={setLoad} />
+            <DeleteZoo show={showDeleteEmployees} setShow={setShowDeleteEmployees} setLoad={setLoad} />
+            <SortZoo show={showSortEmployees} setShow={setShowSortEmployees} setLoad={setLoad} />
         </Container>
     );
 };
