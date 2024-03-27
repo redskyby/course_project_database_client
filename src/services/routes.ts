@@ -1,6 +1,7 @@
 import AnimalTable from "../pages/AnimalTable";
 import {
     ANIMALS_ROUTE,
+    EMPLOYEES_ROUTE,
     FEEDS_ROUTE,
     ILLNESSES_ROUTE,
     POSITION_ROUTE,
@@ -14,6 +15,7 @@ import VaccinationTable from "../pages/VaccinationTable";
 import IllnessesTable from "../pages/IllnessesTable";
 import ZoosTable from "../pages/ZoosTable";
 import WorkWithAnimalsTable from "../pages/WorkWithAnimalsTable";
+import EmployeesTable from "../pages/EmployeesTable";
 
 export const publicRoutes: { path: string; Component: React.FC }[] = [
     {
@@ -43,5 +45,9 @@ export const publicRoutes: { path: string; Component: React.FC }[] = [
     {
         path: WORK_WITH_ANIMALS_ROUTE,
         Component: WorkWithAnimalsTable,
+    },
+    {
+        path: EMPLOYEES_ROUTE,
+        Component: EmployeesTable,
     },
 ];

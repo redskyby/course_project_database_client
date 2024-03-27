@@ -11,6 +11,7 @@ import {
     VACCINATION_ROUTE,
     ZOOS_ROUTE,
     WORK_WITH_ANIMALS_ROUTE,
+    EMPLOYEES_ROUTE,
 } from "../services/const";
 
 const NavBar = () => {
@@ -29,6 +30,7 @@ const NavBar = () => {
                         <Nav.Link onClick={() => history(ILLNESSES_ROUTE)}>Illnesses</Nav.Link>
                         <Nav.Link onClick={() => history(ZOOS_ROUTE)}>Zoos</Nav.Link>
                         <Nav.Link onClick={() => history(WORK_WITH_ANIMALS_ROUTE)}>Work with animals</Nav.Link>
+                        <Nav.Link onClick={() => history(EMPLOYEES_ROUTE)}>Employees</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
