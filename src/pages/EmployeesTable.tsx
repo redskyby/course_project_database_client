@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { InterfaceForZoos } from "../services/interfaces/interfaceForZoos";
 import { RootState } from "../redux";
-import ZoosApi from "../api/ZoosApi";
 import { SET_ZOOS } from "../redux/slice/ZoosSlice";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -14,6 +13,7 @@ import AddZoo from "../components/modals/modalZoo/AddZoo";
 import EditZoo from "../components/modals/modalZoo/EditZoo";
 import DeleteZoo from "../components/modals/modalZoo/DeleteZoo";
 import SortZoo from "../components/modals/modalZoo/SortZoo";
+import EmployeesApi from "../api/EmployeesApi";
 
 const EmployeesTable = () => {
     const dispatch = useDispatch();
@@ -26,7 +26,7 @@ const EmployeesTable = () => {
     const [showSortZoos, setShowSortZoos] = useState<boolean>(false);
 
     useEffect(() => {
-        ZoosApi.getAllZoos()
+        EmployeesApi.getAllZoos()
             .then((data: InterfaceForZoos[]) => {
                 dispatch(SET_ZOOS(data));
             })
@@ -34,7 +34,7 @@ const EmployeesTable = () => {
     }, []);
 
     useEffect(() => {
-        ZoosApi.getAllZoos()
+        EmployeesApi.getAllZoos()
             .then((data: InterfaceForZoos[]) => {
                 dispatch(SET_ZOOS(data));
                 setLoad(false);
