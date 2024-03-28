@@ -39,14 +39,9 @@ class EmployeesApi {
         }
     }
 
-    public async deleteZoo(id: number, dateT: string) {
+    public async deleteEmployee(id: number) {
         try {
-            const { data } = await $host.delete(`api/employees/deleteZoo`, {
-                data: {
-                    date: dateT,
-                    idAnimal: id,
-                },
-            });
+            const { data } = await $host.delete(`api/employees/delete/?id=${id}`);
             return data;
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (e: any) {
