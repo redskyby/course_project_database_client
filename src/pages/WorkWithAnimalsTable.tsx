@@ -10,10 +10,10 @@ import { localDate } from "../services/localDate";
 import { InterfaceForWorkWithAnimals } from "../services/interfaces/interfaceForWorkWithAnimals";
 import WorkWithAnimalsApi from "../api/WorkWithAnimalsApi";
 import { SET_WorkWitAnimals } from "../redux/slice/WorkWithAnimalSlice";
-import AddWorkWithAnimals from "../components/modals/WorkWithAnimalsTable/AddWorkWithAnimals";
-import DeleteWorkWithAnimals from "../components/modals/WorkWithAnimalsTable/DeleteWorkWithAnimals";
-import SortWorkWithAnimals from "../components/modals/WorkWithAnimalsTable/SortWorkWithAnimals";
-import EditWorkWithAnimals from "../components/modals/WorkWithAnimalsTable/EditWorkWithAnimals";
+import AddWorkWithAnimals from "../components/modals/modalWorkWithAnimals/AddWorkWithAnimals";
+import DeleteWorkWithAnimals from "../components/modals/modalWorkWithAnimals/DeleteWorkWithAnimals";
+import SortWorkWithAnimals from "../components/modals/modalWorkWithAnimals/SortWorkWithAnimals";
+import EditWorkWithAnimals from "../components/modals/modalWorkWithAnimals/EditWorkWithAnimals";
 
 const WorkWithAnimalsTable = () => {
     const dispatch = useDispatch();
