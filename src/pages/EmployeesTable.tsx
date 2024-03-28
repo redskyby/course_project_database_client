@@ -7,13 +7,13 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Table from "react-bootstrap/Table";
 import { localDate } from "../services/localDate";
-import EditZoo from "../components/modals/modalZoo/EditZoo";
 import SortZoo from "../components/modals/modalZoo/SortZoo";
 import EmployeesApi from "../api/EmployeesApi";
 import { InterfaceForEmployees } from "../services/interfaces/interfaceForEmployees";
 import { SET_EMPLOYEES } from "../redux/slice/EmployeesSlice";
 import AddEmployee from "../components/modals/modalEmployees/AddEmployee";
 import DeleteEmployee from "../components/modals/modalEmployees/DeleteEmployee";
+import EditEmployee from "../components/modals/modalEmployees/EditEmployee";
 
 const EmployeesTable = () => {
     const dispatch = useDispatch();
@@ -105,7 +105,7 @@ const EmployeesTable = () => {
                 <h2>Данные отсутствуют или проверьте соединение с интернетом...</h2>
             )}
             <AddEmployee show={showAddEmployees} setShow={setShowAddEmployees} setLoad={setLoad} />
-            <EditZoo show={showEditEmployees} setShow={setShowEditEmployees} setLoad={setLoad} />
+            <EditEmployee show={showEditEmployees} setShow={setShowEditEmployees} setLoad={setLoad} />
             <DeleteEmployee show={showDeleteEmployees} setShow={setShowDeleteEmployees} setLoad={setLoad} />
             <SortZoo show={showSortEmployees} setShow={setShowSortEmployees} setLoad={setLoad} />
         </Container>
