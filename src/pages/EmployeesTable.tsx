@@ -7,13 +7,13 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Table from "react-bootstrap/Table";
 import { localDate } from "../services/localDate";
-import SortZoo from "../components/modals/modalZoo/SortZoo";
 import EmployeesApi from "../api/EmployeesApi";
 import { InterfaceForEmployees } from "../services/interfaces/interfaceForEmployees";
 import { SET_EMPLOYEES } from "../redux/slice/EmployeesSlice";
 import AddEmployee from "../components/modals/modalEmployees/AddEmployee";
 import DeleteEmployee from "../components/modals/modalEmployees/DeleteEmployee";
 import EditEmployee from "../components/modals/modalEmployees/EditEmployee";
+import SortEmployees from "../components/modals/modalEmployees/SortEmployees";
 
 const EmployeesTable = () => {
     const dispatch = useDispatch();
@@ -107,7 +107,7 @@ const EmployeesTable = () => {
             <AddEmployee show={showAddEmployees} setShow={setShowAddEmployees} setLoad={setLoad} />
             <EditEmployee show={showEditEmployees} setShow={setShowEditEmployees} setLoad={setLoad} />
             <DeleteEmployee show={showDeleteEmployees} setShow={setShowDeleteEmployees} setLoad={setLoad} />
-            <SortZoo show={showSortEmployees} setShow={setShowSortEmployees} setLoad={setLoad} />
+            <SortEmployees show={showSortEmployees} setShow={setShowSortEmployees} setLoad={setLoad} />
         </Container>
     );
 };

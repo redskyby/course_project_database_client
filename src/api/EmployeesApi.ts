@@ -49,7 +49,7 @@ class EmployeesApi {
         }
     }
 
-    public async sortZoo(sortBy: string) {
+    public async sortEmployees(sortBy: string) {
         try {
             const { data } = await $host.get(`api/employees/sortBy/?sort=${sortBy}`);
             return data;
