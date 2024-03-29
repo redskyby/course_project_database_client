@@ -20,8 +20,8 @@ const EditAnimal = ({
     const [name, setName] = useState<string>("");
     const [species, setSpecies] = useState<string>("");
     const [gender, setGender] = useState<string>("");
-    const [height, setHeight] = useState<string>("");
-    const [weight, setWeight] = useState<string>("");
+    const [height, setHeight] = useState<number>(0);
+    const [weight, setWeight] = useState<number>(0);
     const [date, setDate] = useState<string>("");
     const [age, setAge] = useState<number>(0);
     const [typeOfFeed, setTypeOfFeed] = useState<string>("");
@@ -39,8 +39,8 @@ const EditAnimal = ({
             !name ||
             !species ||
             !gender ||
-            !height ||
-            !weight ||
+            height <= 0 ||
+            weight <= 0 ||
             !date ||
             age <= 0 ||
             cageNum <= 0 ||
@@ -130,18 +130,18 @@ const EditAnimal = ({
                             <Form.Group controlId="height">
                                 <Form.Label>Height</Form.Label>
                                 <Form.Control
-                                    type="text"
+                                    type="number"
                                     value={height}
-                                    onChange={(e) => setHeight(e.target.value)}
+                                    onChange={(e) => setHeight(parseInt(e.target.value))}
                                     required
                                 />
                             </Form.Group>
                             <Form.Group controlId="weight">
                                 <Form.Label>Weight</Form.Label>
                                 <Form.Control
-                                    type="text"
+                                    type="number"
                                     value={weight}
-                                    onChange={(e) => setWeight(e.target.value)}
+                                    onChange={(e) => setWeight(parseInt(e.target.value))}
                                     required
                                 />
                             </Form.Group>

@@ -3,8 +3,8 @@ export interface AnimalInterface {
     name: string;
     species: string;
     gender: string;
-    height: string;
-    weight: string;
+    height: number;
+    weight: number;
     date: string;
     age: number;
     typeOfFeed: string;
@@ -21,8 +21,8 @@ export interface FormDatForAddAnimalModal {
     name: string;
     species: string;
     gender: string;
-    height: string;
-    weight: string;
+    height: number;
+    weight: number;
     date: string;
     age: number;
     typeOfFeed: string;
