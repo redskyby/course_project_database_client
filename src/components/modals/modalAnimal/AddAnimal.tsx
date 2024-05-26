@@ -164,6 +164,8 @@ const AddAnimal = ({
                                     <option value="">Select Type of Feed</option>
                                     <option value="meat">Meat</option>
                                     <option value="herb">Herb</option>
+                                    <option value="herb">Live</option>
+                                    <option value="herb">Various compound feeds</option>
                                 </Form.Control>
                             </Form.Group>
                             <Form.Group controlId="naturalArea">
