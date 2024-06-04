@@ -10,7 +10,6 @@ const AppRoutes = () => {
                 {publicRoutes.map(({ path, Component }) => {
                     return <Route key={path} path={path} element={<Component />} />;
                 })}
-
                 <Route path="*" element={<Navigate to={ANIMALS_ROUTE} />} />
             </Routes>
         </div>
