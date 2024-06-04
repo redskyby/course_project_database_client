@@ -21,7 +21,7 @@ const GetReport = ({
     const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
 
-        if (idAnimal <= 0 ) {
+        if (idAnimal <= 0) {
             alert("Пожалуйста, заполните все поля корректно.");
             return;
         } else {

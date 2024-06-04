@@ -1,10 +1,10 @@
 import { $host } from "./index";
 
 class ReportApi {
-    public async getReport(id : number) {
+    public async getReport(id: number) {
         try {
-            const { data } = await $host.get(`api/report/report/?id=${id}` ,{
-                responseType : 'blob'
+            const { data } = await $host.get(`api/report/report/?id=${id}`, {
+                responseType: "blob",
             });
 
             return data;
@@ -14,6 +14,7 @@ class ReportApi {
             console.log(e.response.data);
             alert(e.response.data.message);
         }
-    }}
+    }
+}
 
-    export default new ReportApi();
+export default new ReportApi();
