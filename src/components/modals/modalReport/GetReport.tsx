@@ -6,8 +6,9 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { InterfaceForVaccination } from "../../../services/interfaces/interfaceForVaccination";
 import VaccinationApi from "../../../api/VaccinationApi";
+import ReportApi from "../../../api/ReportApi";
 
-const GetReport= ({
+const GetReport = ({
     show,
     setShow,
     setLoad,
@@ -17,17 +18,16 @@ const GetReport= ({
     setLoad: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
     const [idAnimal, setIdAnimal] = useState<number>(0);
-    const [date, setDate] = useState<string>("");
     const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
 
-        if (idAnimal <= 0 || !date) {
+        if (idAnimal <= 0 ) {
             alert("Пожалуйста, заполните все поля корректно.");
             return;
         } else {
             setShow(false);
 
-            VaccinationApi.deleteVaccination(idAnimal, date)
+            ReportApi.getReport(idAnimal)
                 .then(() => {
                     setShow(false);
                     setLoad(true);
@@ -41,7 +41,7 @@ const GetReport= ({
     return (
         <Modal show={show} onHide={() => setShow(false)}>
             <Modal.Header closeButton>
-                <Modal.Title>Удалить вакцину</Modal.Title>
+                <Modal.Title>Отчет о животном</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <Form>
@@ -56,15 +56,6 @@ const GetReport= ({
                                     required
                                 />
                             </Form.Group>
-                            <Form.Group controlId="data">
-                                <Form.Label>Data</Form.Label>
-                                <Form.Control
-                                    type="date"
-                                    value={date}
-                                    onChange={(e) => setDate(e.target.value)}
-                                    required
-                                />
-                            </Form.Group>
                         </Col>
                     </Row>
                 </Form>
@@ -74,7 +65,7 @@ const GetReport= ({
                     Закрыть
                 </Button>
                 <Button variant="primary" onClick={(e) => handleSubmit(e)}>
-                    Удалить
+                    Получить отчет
                 </Button>
             </Modal.Footer>
         </Modal>

@@ -17,7 +17,6 @@ import IllnessesTable from "../pages/IllnessesTable";
 import ZoosTable from "../pages/ZoosTable";
 import WorkWithAnimalsTable from "../pages/WorkWithAnimalsTable";
 import EmployeesTable from "../pages/EmployeesTable";
-import GetReport from "../components/modals/modalReport/GetReport";
 import ReportTable from "../pages/ReportTable";
 
 export const publicRoutes: { path: string; Component: React.FC }[] = [
@@ -55,6 +54,6 @@ export const publicRoutes: { path: string; Component: React.FC }[] = [
     },
     {
         path: REPORT_ROUTE,
-        Component:  ReportTable,
+        Component: ReportTable,
     },
 ];
